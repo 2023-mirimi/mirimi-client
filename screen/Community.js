@@ -1,0 +1,169 @@
+import React from "react";
+import { Text, View, StyleSheet,Image, TouchableOpacity } from 'react-native';
+
+const Community = () => {
+    return(
+        <View style={styles.container}>
+            <View style={styles.header}>
+                <TouchableOpacity onPress={() => showMenu()} style={styles.menuBtn}>
+                    <Image source={require('../public/menu.png')} style={styles.leftIcon}></Image>
+                </TouchableOpacity>
+                <Text style={styles.title}>커뮤니티</Text>
+                <TouchableOpacity onPress={() => showMenu()} style={styles.menuBtn}>
+                    <Image source={require('../public/bell.png')} style={styles.leftIcon}></Image>
+                </TouchableOpacity>
+            </View>
+            <View style={styles.category}>
+                <TouchableOpacity >
+                    <Text style={styles.categoryTxt}>전체</Text>
+                </TouchableOpacity>
+                <TouchableOpacity >
+                    <Text style={styles.categoryTxt}>일상</Text>
+                </TouchableOpacity><TouchableOpacity >
+                    <Text style={styles.categoryTxt}>취업</Text>
+                </TouchableOpacity><TouchableOpacity >
+                    <Text style={styles.categoryTxt}>학교</Text>
+                </TouchableOpacity>
+                <TouchableOpacity >
+                    <Text style={styles.categoryTxt}>공모전</Text>
+                </TouchableOpacity>
+            </View>
+            <View>
+                <View style={styles.box}>
+                    <TouchableOpacity style={styles.postBox}>
+                        <Text style={styles.postCategory}>일상</Text>
+                        <Text style={styles.postTitle}>안녕하세요 집에 가고 싶지만 집에 갈 수 없워용 제발 날 집에 보내줭~!~!~!</Text>
+                        <View style={styles.postInfo}>
+                            <Text style={styles.postInfoTxt}>작성자  |</Text>
+                            <Text style={styles.postInfoTxt}>2023.05.18  |</Text>
+                            <Text style={styles.postInfoTxt}>{Number}views</Text>
+                        </View>
+                        <View style={styles.postLikes}>
+                            <Image source={require('../public/comment.png')}></Image>
+                            <Text style={styles.postLikesTxt}>1,234</Text>
+                            <Image source={require('../public/thumb.png')}></Image>
+                            <Text style={styles.postLikesTxt}>1,234</Text>
+                        </View>
+                    </TouchableOpacity>
+                </View>
+                <View style={styles.box}>
+                    <TouchableOpacity style={styles.postBox}>
+                        <Text style={styles.postCategory}>일상</Text>
+                        <Text style={styles.postTitle}>안녕하세요 집에 가고 싶지만 집에 갈 수 없워용 제발 날 집에 보내줭~!~!~!</Text>
+                        <View style={styles.postInfo}>
+                            <Text style={styles.postInfoTxt}>작성자  |</Text>
+                            <Text style={styles.postInfoTxt}>2023.05.18  |</Text>
+                            <Text style={styles.postInfoTxt}>{Number}views</Text>
+                        </View>
+                        <View style={styles.postLikes}>
+                            <Image source={require('../public/comment.png')}></Image>
+                            <Text style={styles.postLikesTxt}>1,234</Text>
+                            <Image source={require('../public/thumb.png')}></Image>
+                            <Text style={styles.postLikesTxt}>1,234</Text>
+                        </View>
+                    </TouchableOpacity>
+                </View>
+                <View style={styles.box}>
+                    <TouchableOpacity style={styles.postBox}>
+                        <Text style={styles.postCategory}>일상</Text>
+                        <Text style={styles.postTitle}>안녕하세요 집에 가고 싶지만 집에 갈 수 없워용 제발 날 집에 보내줭~!~!~!</Text>
+                        <View style={styles.postInfo}>
+                            <Text style={styles.postInfoTxt}>작성자  |</Text>
+                            <Text style={styles.postInfoTxt}>2023.05.18  |</Text>
+                            <Text style={styles.postInfoTxt}>{Number}views</Text>
+                        </View>
+                        <View style={styles.postLikes}>
+                            <Image source={require('../public/comment.png')}></Image>
+                            <Text style={styles.postLikesTxt}>1,234</Text>
+                            <Image source={require('../public/thumb.png')}></Image>
+                            <Text style={styles.postLikesTxt}>1,234</Text>
+                        </View>
+                    </TouchableOpacity>
+                </View>
+                <TouchableOpacity>
+                    <Image source={require('../public/edit.png')}></Image>
+                </TouchableOpacity>
+            </View>
+        </View>
+    );
+}
+
+const styles = StyleSheet.create({
+    container: {
+        
+    },
+    header: {
+        width: 375,
+        height: 44,
+        marginTop: 44,
+        alignItems:'center',
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        paddingLeft: 16,
+        paddingRight: 16,
+    },
+    title: {
+        fontWeight: 'bold',
+        fontSize: 16,
+        color: '#000',
+    },
+    category: {
+        width: 375,
+        height: 44,
+        gap: 40,
+        paddingTop: 12,
+        flexDirection: 'row',
+        justifyContent: 'center',
+        borderBottomColor: '#F5F5F5',
+        borderBottomWidth: 1,
+    },
+    categoryTxt: {
+        fontSize: 18,
+    },
+    box: {
+        flexDirection: 'row',
+        justifyContent: 'center',
+        marginTop: 44,
+        marginLeft: 16,
+        marginRight: 16
+    },
+    postBox: {
+        width: 343,
+        padding: 16,
+        height: 152,
+        borderColor: '#E8E8E8',
+        borderWidth: 1,
+        borderRadius: 10
+    },
+    postCategory: {
+        fontSize: 14,
+        color: '#17E381',
+        fontWeight: 'bold'
+    },
+    postTitle: {
+        fontSize: 16,
+        fontWeight: 700,
+        marginTop: 4,
+        marginBottom: 8
+    },
+    postInfo: {
+        flexDirection: 'row',
+        gap: 8,
+        color: '#E9E9E9'
+    },
+    postInfoTxt: {
+        color: '#5A5A5A'
+    },
+    postLikes: {
+        flexDirection: 'row',
+        marginTop: 18,
+        justifyContent: 'flex-end',
+        gap: 6,
+        alignItems: 'center'
+    },
+    postLikesTxt: {
+        color: '#5A5A5A',
+    }
+});
+
+export default Community;
