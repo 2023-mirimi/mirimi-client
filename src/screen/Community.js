@@ -1,7 +1,7 @@
 import React from "react";
-import { Text, View, StyleSheet,Image, TouchableOpacity } from 'react-native';
+import { Text, View, StyleSheet,Image, TouchableOpacity, ScrollView } from 'react-native';
 
-const Community = () => {
+const Community = ({navigation}) => {
     return(
         <View style={styles.container}>
             <View style={styles.header}>
@@ -28,9 +28,10 @@ const Community = () => {
                     <Text style={styles.categoryTxt}>공모전</Text>
                 </TouchableOpacity>
             </View>
-            <View>
+            {/* 게시글 리스트 */}
+            <ScrollView>
                 <View style={styles.box}>
-                    <TouchableOpacity style={styles.postBox}>
+                    <TouchableOpacity style={styles.postBox} onPress={()=>navigation.navigate("DetailedCommunity")}>
                         <Text style={styles.postCategory}>일상</Text>
                         <Text style={styles.postTitle}>안녕하세요 집에 가고 싶지만 집에 갈 수 없워용 제발 날 집에 보내줭~!~!~!</Text>
                         <View style={styles.postInfo}>
@@ -46,17 +47,18 @@ const Community = () => {
                         </View>
                     </TouchableOpacity>
                 </View>
-                <TouchableOpacity>
-                    <Image source={require('../../public/edit.png')}></Image>
-                </TouchableOpacity>
-            </View>
+            </ScrollView>
+            <TouchableOpacity style={styles.addPost} onPress={()=> navigation.navigate("NewPost")}>
+                    <Image source={require('../assets/floating_btn.png')}></Image>
+            </TouchableOpacity>
         </View>
     );
 }
 
 const styles = StyleSheet.create({
     container: {
-        
+        height: 812,
+        backgroundColor: '#fff'
     },
     header: {
         width: 375,
@@ -129,6 +131,14 @@ const styles = StyleSheet.create({
     },
     postLikesTxt: {
         color: '#5A5A5A',
+    },
+    addPost: {
+        bottom: 0,
+        right: 0,
+        position: 'absolute',
+        marginRight: 16,
+        marginBottom: 48,
+        display: 'flex'
     }
 });
 
