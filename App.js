@@ -1,8 +1,8 @@
 import React from "react";
 // import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
-import Community from './screen/Community';
-import Login from "./screen/Login";
+import Community from './src/screen/Community';
+import Login from "./src/screen/Login";
 
 const App = () => {
   return (

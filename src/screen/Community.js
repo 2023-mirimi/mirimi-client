@@ -6,11 +6,11 @@ const Community = () => {
         <View style={styles.container}>
             <View style={styles.header}>
                 <TouchableOpacity onPress={() => showMenu()} style={styles.menuBtn}>
-                    <Image source={require('../public/menu.png')} style={styles.leftIcon}></Image>
+                    <Image source={require('../../public/menu.png')} style={styles.leftIcon}></Image>
                 </TouchableOpacity>
                 <Text style={styles.title}>커뮤니티</Text>
                 <TouchableOpacity onPress={() => showMenu()} style={styles.menuBtn}>
-                    <Image source={require('../public/bell.png')} style={styles.leftIcon}></Image>
+                    <Image source={require('../../public/bell.png')} style={styles.leftIcon}></Image>
                 </TouchableOpacity>
             </View>
             <View style={styles.category}>
@@ -39,49 +39,15 @@ const Community = () => {
                             <Text style={styles.postInfoTxt}>{Number}views</Text>
                         </View>
                         <View style={styles.postLikes}>
-                            <Image source={require('../public/comment.png')}></Image>
+                            <Image source={require('../../public/comment.png')}></Image>
                             <Text style={styles.postLikesTxt}>1,234</Text>
-                            <Image source={require('../public/thumb.png')}></Image>
-                            <Text style={styles.postLikesTxt}>1,234</Text>
-                        </View>
-                    </TouchableOpacity>
-                </View>
-                <View style={styles.box}>
-                    <TouchableOpacity style={styles.postBox}>
-                        <Text style={styles.postCategory}>일상</Text>
-                        <Text style={styles.postTitle}>안녕하세요 집에 가고 싶지만 집에 갈 수 없워용 제발 날 집에 보내줭~!~!~!</Text>
-                        <View style={styles.postInfo}>
-                            <Text style={styles.postInfoTxt}>작성자  |</Text>
-                            <Text style={styles.postInfoTxt}>2023.05.18  |</Text>
-                            <Text style={styles.postInfoTxt}>{Number}views</Text>
-                        </View>
-                        <View style={styles.postLikes}>
-                            <Image source={require('../public/comment.png')}></Image>
-                            <Text style={styles.postLikesTxt}>1,234</Text>
-                            <Image source={require('../public/thumb.png')}></Image>
-                            <Text style={styles.postLikesTxt}>1,234</Text>
-                        </View>
-                    </TouchableOpacity>
-                </View>
-                <View style={styles.box}>
-                    <TouchableOpacity style={styles.postBox}>
-                        <Text style={styles.postCategory}>일상</Text>
-                        <Text style={styles.postTitle}>안녕하세요 집에 가고 싶지만 집에 갈 수 없워용 제발 날 집에 보내줭~!~!~!</Text>
-                        <View style={styles.postInfo}>
-                            <Text style={styles.postInfoTxt}>작성자  |</Text>
-                            <Text style={styles.postInfoTxt}>2023.05.18  |</Text>
-                            <Text style={styles.postInfoTxt}>{Number}views</Text>
-                        </View>
-                        <View style={styles.postLikes}>
-                            <Image source={require('../public/comment.png')}></Image>
-                            <Text style={styles.postLikesTxt}>1,234</Text>
-                            <Image source={require('../public/thumb.png')}></Image>
+                            <Image source={require('../../public/thumb.png')}></Image>
                             <Text style={styles.postLikesTxt}>1,234</Text>
                         </View>
                     </TouchableOpacity>
                 </View>
                 <TouchableOpacity>
-                    <Image source={require('../public/edit.png')}></Image>
+                    <Image source={require('../../public/edit.png')}></Image>
                 </TouchableOpacity>
             </View>
         </View>
