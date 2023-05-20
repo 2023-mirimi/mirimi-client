@@ -3,9 +3,8 @@ import { View, Image, StyleSheet, TextInput, Text, TouchableOpacity, Button } fr
 import BouncyCheckbox from "react-native-bouncy-checkbox";
 import Icon from 'react-native-vector-icons/FontAwesome';
 
-const Login = () => {
+export default Login = ({navigation}) => {
     const [isSecureEntry, setIsSecureEntry] = useState(true);
-
     return(
         <View style={styles.container}>
             <Image style={styles.icon} source={require('../../public/icon.png')}></Image>
@@ -33,7 +32,7 @@ const Login = () => {
             </View>
             <View style={styles.signup}>
                 <Text>아직 계정이 없으신가요?</Text>
-                <Button onPress={()=>navigation.navigate('Join')} title='회원가입' color='#000'></Button>
+                <Button onPress={() => navigation.navigate("Join")} title='회원가입' color='#000'></Button>
             </View>
         </View>               
     )
@@ -45,7 +44,9 @@ const styles = StyleSheet.create({
         flexDirection: 'column',
         alignItems: 'center',
         gap: 12,
-        marginTop: 190,
+        paddingTop: 190,
+        backgroundColor: '#fff',
+        height: 812,
     },
     login: {
         marginTop: 44,
@@ -89,5 +90,3 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     }
 });
-
-export default Login;
