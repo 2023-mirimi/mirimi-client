@@ -1,9 +1,17 @@
 import React from "react";
 import { StyleSheet,View, Text,TouchableOpacity,Image, TextInput } from "react-native";
-import Picker from '@react-native-picker/picker';
+import { useState } from "react";
+import DropDownPicker from 'react-native-dropdown-picker';
 
 const NewPost = ({navigation}) => {
-    const [selectedCategory, setSelectedCategory] = useState("카테고리");
+    const [open, setOpen] = useState(false);
+    const [category, setCategory] = useState(null);
+    const [items, setItems] = useState([
+        {label: '일상', value: 'daily'},
+        {label: '취업', value: 'employment'},
+        {label: '학교', value: 'school'},
+        {label: '공모전', value: 'contest'}
+    ]);
     return(
         <View style={styles.container}>
             <View style={styles.header}>
@@ -17,21 +25,55 @@ const NewPost = ({navigation}) => {
             </View>
             <View>
                 <TextInput style={styles.title} placeholder="제목"/>
-                <TextInput style={styles.title} placeholder="카테고리"/>
-                <Picker
-                    selectedValue={selectedCategory}
-                    onValueChange={(itemValue, itemIndex) =>
-                        setSelectedCategory(itemValue)
-                    }>
-                    <Picker.Item label="Java" value="java" />
-                    <Picker.Item label="JavaScript" value="js" />
-                </Picker>
+                <DropDownPicker 
+                    open={open}
+                    value={category}
+                    items={items}
+                    setOpen={setOpen}
+                    setValue={setCategory}
+                    setItems={setItems}
+                    disableBorderRadius={true}
+                    onClose={() => console.log(category)} //선택한 카테고리
+                    translation={{
+                        PLACEHOLDER: "카테고리"
+                    }}
+                    dropDownContainerStyle={{
+                        borderBottomColor: '#F3F3F3',
+                        borderRadius: 10,
+                        borderColor: 0,
+                        backgroundColor: '#FAFAFA',
+                    }}
+                    style={{
+                        borderBottomColor: '#F3F3F3',
+                        borderColor: 0,
+                        borderRadius: 0,
+                    }}
+                    labelStyle={{
+                        color: '#414141',
+                        padding: 4,
+
+                    }}
+                    textStyle={{
+                        color: '#414141',
+                        padding: 4,
+                    }}
+                />
+                <TextInput style={styles.content} placeholder="내용을 입력하세요."/>
             </View>
         </View>
     );
 }
 
 const styles = StyleSheet.create({
+    content: {
+        padding: 16,
+        fontSize: 16,
+        borderBottomColor: '#F3F3F3',
+        borderBottomWidth: 1,
+        height: 545,
+        flexDirection: 'column',
+        alignItems: 'flex-start',
+    },
     title: {
         padding: 16,
         fontSize: 16,
