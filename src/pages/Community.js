@@ -5,11 +5,11 @@ const Community = ({navigation}) => {
     return(
         <View style={styles.container}>
             <View style={styles.header}>
-                <TouchableOpacity onPress={() => showMenu()} style={styles.menuBtn}>
+                <TouchableOpacity style={styles.menuBtn}>
                     <Image source={require('../assets/menu.png')} style={styles.leftIcon}></Image>
                 </TouchableOpacity>
                 <Text style={styles.title}>커뮤니티</Text>
-                <TouchableOpacity onPress={() => showMenu()} style={styles.menuBtn}>
+                <TouchableOpacity style={styles.menuBtn}>
                     <Image source={require('../assets/bell.png')} style={styles.leftIcon}></Image>
                 </TouchableOpacity>
             </View>
@@ -137,7 +137,7 @@ const styles = StyleSheet.create({
         right: 0,
         position: 'absolute',
         marginRight: 16,
-        marginBottom: 48,
+        marginBottom: 92,
         display: 'flex'
     }
 });

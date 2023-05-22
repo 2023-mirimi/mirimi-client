@@ -72,7 +72,7 @@ const Join = ({navigation}) => {
                     textStyle={{ fontFamily: "JosefinSans-Regular", textDecorationLine: 'none' }}
                     onPress={() => {}}
                 />
-                <TouchableOpacity onPress={()=> navigation.navigate("Community")}> 
+                <TouchableOpacity onPress={()=> navigation.navigate("Root")}> 
                     <View style={styles.joinButton}>
                         <Text style={{fontWeight: 500,fontSize: 16}}>회원가입</Text>
                     </View>

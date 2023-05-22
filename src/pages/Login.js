@@ -24,7 +24,7 @@ export default Login = ({navigation}) => {
                         innerIconStyle={{ borderWidth: 0 }}
                     />
                 </View>
-                <TouchableOpacity> 
+                <TouchableOpacity onPress={() => navigation.navigate("Root")}> 
                     <View style={styles.button}>
                         <Text style={styles.buttonTxt}>로그인</Text>
                     </View>
