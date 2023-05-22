@@ -1,14 +1,14 @@
 import React from "react";
-// import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
-import StackNavigator from "./src/navigation/StackNavigator";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
-
-const Stack = createNativeStackNavigator();
+import MyStack from "./src/navigation/StackNavigator";
+import { NavigationContainer } from '@react-navigation/native';
 
 const App = () => {
   return (
-      <StackNavigator />
+      <NavigationContainer>
+        <MyStack />
+      </NavigationContainer>
+    
   )
 }
 

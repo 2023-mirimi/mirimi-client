@@ -8,9 +8,8 @@ import NewPost from "../pages/NewPost";
 
 const Stack = createNativeStackNavigator();
 
-const StackNavigator = () => {
+const MyStack = () => {
     return(
-      <NavigationContainer>
         <Stack.Navigator>
             <Stack.Screen name="Login" component={Login} options={{headerShown: false}}/>
             <Stack.Screen name="Join" component={Join} options={{headerShown: false}}/>
@@ -18,8 +17,7 @@ const StackNavigator = () => {
             <Stack.Screen name="DetailedCommunity" component={DetailedCommunity} options={{headerShown: true}}/>
             <Stack.Screen name="NewPost" component={NewPost} options={{headerShown: false}}/>
         </Stack.Navigator>
-    </NavigationContainer>
     );
 }
 
-export default StackNavigator ;
+export default MyStack ;
