@@ -8,7 +8,7 @@ const Join = ({navigation}) => {
             <View style={styles.header}>
                 <View style={styles.headerLeft}>
                     <TouchableOpacity onPress={()=> navigation.navigate("Login")}>
-                        <Image source={require('../../public/back.png')}></Image>
+                        <Image source={require('../assets/back.png')}></Image>
                     </TouchableOpacity>
                 </View>
                 <View style={styles.headerCenter}>
