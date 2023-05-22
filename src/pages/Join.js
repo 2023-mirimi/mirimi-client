@@ -1,10 +1,10 @@
 import React from "react";
-import { View, Text, TouchableOpacity, Image, StyleSheet, TextInput } from "react-native";
+import { View, Text, TouchableOpacity, Image, StyleSheet, TextInput, ScrollView } from "react-native";
 import BouncyCheckbox from "react-native-bouncy-checkbox";
 
 const Join = ({navigation}) => {
     return(
-        <View style={{backgroundColor: '#FFF', height: 812}}>
+        <ScrollView style={{backgroundColor: '#FFF', height: 812}}>
             <View style={styles.header}>
                 <View style={styles.headerLeft}>
                     <TouchableOpacity onPress={()=> navigation.navigate("Login")}>
@@ -70,7 +70,7 @@ const Join = ({navigation}) => {
                     innerIconStyle={{ borderWidth: 2, borderRadius: 4 }}
                     iconStyle={{borderRadius:4}}
                     textStyle={{ fontFamily: "JosefinSans-Regular", textDecorationLine: 'none' }}
-                    onPress={(isChecked: boolean) => {}}
+                    onPress={() => {}}
                 />
                 <TouchableOpacity onPress={()=> navigation.navigate("Community")}> 
                     <View style={styles.joinButton}>
@@ -78,7 +78,7 @@ const Join = ({navigation}) => {
                     </View>
                 </TouchableOpacity>
             </View>
-        </View>
+        </ScrollView>
     )
 }
 

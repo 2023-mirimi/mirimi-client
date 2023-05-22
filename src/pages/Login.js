@@ -7,8 +7,8 @@ export default Login = ({navigation}) => {
     const [isSecureEntry, setIsSecureEntry] = useState(true);
     return(
         <View style={styles.container}>
-            <Image style={styles.icon} source={require('../../public/icon.png')}></Image>
-            <Image source={require('../../public/mirimi.png')}></Image>
+            <Image style={styles.icon} source={require('../assets/icon.png')}></Image>
+            <Image source={require('../assets/mirimi.png')}></Image>
             <View style={styles.login}>
                 <TextInput style={styles.inputTxt} placeholder='이메일'></TextInput>
                 <TextInput style={styles.inputTxt} placeholder='비밀번호' secureTextEntry={isSecureEntry}></TextInput>

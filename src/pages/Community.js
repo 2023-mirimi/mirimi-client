@@ -6,11 +6,11 @@ const Community = ({navigation}) => {
         <View style={styles.container}>
             <View style={styles.header}>
                 <TouchableOpacity onPress={() => showMenu()} style={styles.menuBtn}>
-                    <Image source={require('../../public/menu.png')} style={styles.leftIcon}></Image>
+                    <Image source={require('../assets/menu.png')} style={styles.leftIcon}></Image>
                 </TouchableOpacity>
                 <Text style={styles.title}>커뮤니티</Text>
                 <TouchableOpacity onPress={() => showMenu()} style={styles.menuBtn}>
-                    <Image source={require('../../public/bell.png')} style={styles.leftIcon}></Image>
+                    <Image source={require('../assets/bell.png')} style={styles.leftIcon}></Image>
                 </TouchableOpacity>
             </View>
             <View style={styles.category}>
@@ -40,9 +40,9 @@ const Community = ({navigation}) => {
                             <Text style={styles.postInfoTxt}>{Number}views</Text>
                         </View>
                         <View style={styles.postLikes}>
-                            <Image source={require('../../public/comment.png')}></Image>
+                            <Image source={require('../assets/comment.png')}></Image>
                             <Text style={styles.postLikesTxt}>1,234</Text>
-                            <Image source={require('../../public/thumb.png')}></Image>
+                            <Image source={require('../assets/thumb.png')}></Image>
                             <Text style={styles.postLikesTxt}>1,234</Text>
                         </View>
                     </TouchableOpacity>

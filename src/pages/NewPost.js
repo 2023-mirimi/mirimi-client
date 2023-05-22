@@ -16,7 +16,7 @@ const NewPost = ({navigation}) => {
         <View style={styles.container}>
             <View style={styles.header}>
                 <TouchableOpacity onPress={() => navigation.navigate("Community")} style={styles.menuBtn}>
-                    <Image source={require('../../public/back.png')}></Image>
+                    <Image source={require('../assets/back.png')}></Image>
                 </TouchableOpacity>
                 <Text style={styles.headerTxt}>게시글 작성</Text>
                 <TouchableOpacity>
@@ -58,21 +58,32 @@ const NewPost = ({navigation}) => {
                         padding: 4,
                     }}
                 />
-                <TextInput style={styles.content} placeholder="내용을 입력하세요."/>
+                <View>
+                    <TextInput style={styles.content} placeholder="내용을 입력하세요." multiline={true}  maxLength={500}/>
+                    <Text style={styles.contentLimit}>0 / 500자</Text>
+                </View>
             </View>
         </View>
     );
 }
 
 const styles = StyleSheet.create({
+    contentLimit: {
+        textAlign: 'right',
+        paddingRight: 16,
+        paddingTop: 16,
+        color: '#8A8A8A',
+        
+    },
     content: {
-        padding: 16,
+        height: 500,
+        paddingTop: 16,
+        paddingLeft: 16,
+        paddingRight: 16,
+        paddingBottom: 16,
         fontSize: 16,
         borderBottomColor: '#F3F3F3',
         borderBottomWidth: 1,
-        height: 545,
-        flexDirection: 'column',
-        alignItems: 'flex-start',
     },
     title: {
         padding: 16,
@@ -81,6 +92,7 @@ const styles = StyleSheet.create({
         borderBottomWidth: 1,
     },
     container: {
+        width: 376,
         height: 812,
         backgroundColor: '#fff',
     },
