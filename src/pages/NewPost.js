@@ -15,7 +15,7 @@ const NewPost = ({navigation}) => {
     return(
         <View style={styles.container}>
             <View style={styles.header}>
-                <TouchableOpacity onPress={() => navigation.navigate("Community")} style={styles.menuBtn}>
+                <TouchableOpacity onPress={() => navigation.navigate("Root")} style={styles.menuBtn}>
                     <Image source={require('../assets/back.png')}></Image>
                 </TouchableOpacity>
                 <Text style={styles.headerTxt}>게시글 작성</Text>

@@ -3,9 +3,9 @@ import { ScrollView, StyleSheet, Text, View, Image,TouchableOpacity } from "reac
 import { SliderBox } from "react-native-image-slider-box";
 import { createStackNavigator } from "@react-navigation/stack";
 
-import HomeSwiper from "../components/HomeSwiper";
-import MealFlatlist from "../components/MealFlatlist";
-import Schedule from "../components/Schedule";
+import HomeSwiper from "../components/home/HomeSwiper";
+import MealFlatlist from "../components/home/MealFlatlist";
+import Schedule from "../components/home/Schedule";
 
 const Stack = createStackNavigator();
 
@@ -15,11 +15,11 @@ const Home = () => {
       <View style={styles.container}>
       <View style={styles.header}>
         <TouchableOpacity style={styles.menuBtn}>
-          <Image source={require('../assets/menu.png')} style={styles.leftIcon}></Image>
+          <Image source={require('../assets/header/menu.png')} style={styles.leftIcon}></Image>
         </TouchableOpacity>
         <Text style={styles.title}>홈</Text>
         <TouchableOpacity style={styles.menuBtn}>
-          <Image source={require('../assets/bell.png')} style={styles.leftIcon}></Image>
+          <Image source={require('../assets/header/bell.png')} style={styles.leftIcon}></Image>
         </TouchableOpacity>
       </View>
         <HomeSwiper />

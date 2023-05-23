@@ -1,9 +1,15 @@
+import React from "react";
+import { StyleSheet, Text, View,TouchableOpacity,Image } from "react-native";
+import { createStackNavigator } from "@react-navigation/stack";
+
+const Stack = createStackNavigator();
+
 import * as React from 'react';
 import { useWindowDimensions, Text } from 'react-native';
 import { TabView, SceneMap, TabBar } from 'react-native-tab-view';
-import CouncilTab from '../components/councilTab';
-import CalendarTab from '../components/calendarTab';
-import MapTab from '../components/mapTab';
+import CouncilTab from '../components/school/councilTab';
+import CalendarTab from '../components/school/calendarTab';
+import MapTab from '../components/school/mapTab';
 
 const FirstRoute = () => (
   <CouncilTab/>
@@ -58,4 +64,16 @@ const School = () => {
   );
 }
 
-export default School;
+const SchoolLifeNavigator = () => {
+  return (
+    <Stack.Navigator
+      screenOptions={{
+        headerShown: false,
+      }}
+    >
+      <Stack.Screen name="SchoolLifeScreen" component={School} />
+    </Stack.Navigator>
+  );
+};
+
+export default SchoolLifeNavigator;

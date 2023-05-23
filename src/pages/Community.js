@@ -6,11 +6,11 @@ const Community = ({navigation}) => {
         <View style={styles.container}>
             <View style={styles.header}>
                 <TouchableOpacity style={styles.menuBtn}>
-                    <Image source={require('../assets/menu.png')} style={styles.leftIcon}></Image>
+                    <Image source={require('../assets/header/menu.png')} style={styles.leftIcon}></Image>
                 </TouchableOpacity>
                 <Text style={styles.title}>커뮤니티</Text>
                 <TouchableOpacity style={styles.menuBtn}>
-                    <Image source={require('../assets/bell.png')} style={styles.leftIcon}></Image>
+                    <Image source={require('../assets/header/bell.png')} style={styles.leftIcon}></Image>
                 </TouchableOpacity>
             </View>
             <View style={styles.category}>
@@ -40,16 +40,16 @@ const Community = ({navigation}) => {
                             <Text style={styles.postInfoTxt}>{Number}views</Text>
                         </View>
                         <View style={styles.postLikes}>
-                            <Image source={require('../assets/comment.png')}></Image>
+                            <Image source={require('../assets/community/comment.png')}></Image>
                             <Text style={styles.postLikesTxt}>1,234</Text>
-                            <Image source={require('../assets/thumb.png')}></Image>
+                            <Image source={require('../assets/community/thumb.png')}></Image>
                             <Text style={styles.postLikesTxt}>1,234</Text>
                         </View>
                     </TouchableOpacity>
                 </View>
             </ScrollView>
             <TouchableOpacity style={styles.addPost} onPress={()=> navigation.navigate("NewPost")}>
-                    <Image source={require('../assets/floating_btn.png')}></Image>
+                    <Image source={require('../assets/community/floating_btn.png')}></Image>
             </TouchableOpacity>
         </View>
     );
