@@ -1,18 +1,11 @@
 import React from "react";
 import { Text, View, StyleSheet,Image, TouchableOpacity, ScrollView } from 'react-native';
+import Header from "../components/header";
 
 const Community = ({navigation}) => {
     return(
         <View style={styles.container}>
-            <View style={styles.header}>
-                <TouchableOpacity style={styles.menuBtn}>
-                    <Image source={require('../assets/header/menu.png')} style={styles.leftIcon}></Image>
-                </TouchableOpacity>
-                <Text style={styles.title}>커뮤니티</Text>
-                <TouchableOpacity style={styles.menuBtn}>
-                    <Image source={require('../assets/header/bell.png')} style={styles.leftIcon}></Image>
-                </TouchableOpacity>
-            </View>
+            <Header name={"커뮤니티"}/>
             <View style={styles.category}>
                 <TouchableOpacity >
                     <Text style={styles.categoryTxt}>전체</Text>

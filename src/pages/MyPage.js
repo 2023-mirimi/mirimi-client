@@ -1,13 +1,13 @@
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 import { createStackNavigator } from "@react-navigation/stack";
-
+import Header from "../components/header";
 const Stack = createStackNavigator();
 
 const MyPage = () => {
   return (
     <View style={styles.container}>
-      <Text>My!</Text>
+      <Header name={"마이페이지"} />
     </View>
   );
 };
@@ -26,10 +26,12 @@ const MyPageNavigator = () => {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    // flex: 1,
     backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
+    // height: 812,
+    width: 375,
+    // alignItems: "center",
+    // justifyContent: "center",
   },
 });
 
