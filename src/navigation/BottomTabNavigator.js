@@ -5,7 +5,7 @@ import { Text, Image } from "react-native";
 import HomeNavigator from "../pages/Home";
 import CommunityNavigator from "../pages/Community";
 import CompetitionNavigator from "../pages/Competition";
-import SchoolLifeNavigator from "../pages/SchoolLife";
+import SchoolLifeNavigator from "../pages/School";
 import MyPageNavigator from "../pages/MyPage";
 
 const Tab = createBottomTabNavigator();

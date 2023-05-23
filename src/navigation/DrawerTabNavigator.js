@@ -11,7 +11,7 @@ import { Image } from "react-native";
 // import HomeNavigator from "../pages/Home";
 import CommunityNavigator from "../pages/Community";
 import CompetitionNavigator from "../pages/Competition";
-import SchoolLifeNavigator from "../pages/SchoolLife";
+import SchoolLifeNavigator from "../pages/School";
 import MyPageNavigator from "../pages/MyPage";
 
 const Drawer = createDrawerNavigator();
@@ -29,7 +29,7 @@ const DrawerNavigator = () => {
           headerRight: () => (
             <Image
               style={{ width: "20%" }}
-              source={require("../assets/bell.png")}
+              source={require("../assets/header/bell.png")}
             />
           ),
         }}

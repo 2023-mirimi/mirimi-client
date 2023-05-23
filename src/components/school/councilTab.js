@@ -1,5 +1,5 @@
 import { ScrollView, StyleSheet, View } from 'react-native';
-import CouncilCard from '../components/councilCard';
+import CouncilCard from './councilCard';
 
 const CouncilTab = () => {
   return (
