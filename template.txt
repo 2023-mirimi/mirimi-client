@@ -1,0 +1,16 @@
+import React from "react";
+import { StyleSheet } from "react-native";
+
+const 컴포넌트명 = ({navigation}) => {
+    return(
+        <View>
+            
+        </View>
+    );
+}
+
+const styles = StyleSheet.create({
+
+})
+
+export default 컴포넌트명;
