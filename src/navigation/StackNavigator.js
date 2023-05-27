@@ -5,7 +5,8 @@ import Join from "../pages/Join";
 import Community from "../pages/Community";
 import DetailedCommunity from "../pages/DetailedCommunity";
 import NewPost from "../pages/NewPost";
-
+import MyPage from "../pages/MyPage";
+import BookBarCode from "../pages/BookBarcode";
 import BottomTabNavigator from "./BottomTabNavigator";
 import DrawerNavigator from "./DrawerTabNavigator";
 
@@ -21,6 +22,9 @@ const MyStack = () => {
             <Stack.Screen name="Community" component={Community} options={{headerShown: false}}/>
             <Stack.Screen name="DetailedCommunity" component={DetailedCommunity} options={{headerShown: true}}/>
             <Stack.Screen name="NewPost" component={NewPost} options={{headerShown: false}}/>
+            <Stack.Screen name="NewPost" component={NewPost} options={{headerShown: false}}/>
+            <Stack.Screen name="MyPage" component={MyPage} options={{headerShown: false}}/>
+            <Stack.Screen name="BookBarCode" component={BookBarCode} options={{headerShown: false}}/>
         </Stack.Navigator>
     );
 }

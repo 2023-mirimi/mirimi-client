@@ -3,7 +3,7 @@ import { ScrollView, StyleSheet, Text, View, Image,TouchableOpacity } from "reac
 import { SliderBox } from "react-native-image-slider-box";
 import { createStackNavigator } from "@react-navigation/stack";
 
-import Header from "../components/Header";
+import Header from "../components/header";
 import HomeSwiper from "../components/home/HomeSwiper";
 import MealFlatlist from "../components/home/MealFlatlist";
 import Schedule from "../components/home/Schedule";

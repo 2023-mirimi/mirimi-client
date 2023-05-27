@@ -53,7 +53,9 @@ const School = () => {
 
   return (
     <>
-    <Header name={"학교생활"}/>
+    <View style={{backgroundColor: '#fff'}}>
+      <Header name={"학교생활"}/>
+    </View>
       <TabView
         navigationState={{ index, routes }}
         renderScene={renderScene}
