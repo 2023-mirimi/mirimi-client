@@ -16,7 +16,7 @@ const AutoHeightTextInput = ({placeholder}) => {
         placeholder={placeholder}
         maxLength={500}
         style={{ height: inputHeight, 
-                minHeight: 60,
+                minHeight: 200,
                 // backgroundColor: 'pink',
                 paddingTop: 16,
                 paddingLeft: 16,
