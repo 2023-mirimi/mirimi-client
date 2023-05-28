@@ -42,7 +42,7 @@ const MyPage = ({navigation}) => {
           </TouchableOpacity>
         </View>
         <View style={styles.box3}>
-          <TouchableOpacity style={styles.touchBox} onPress={() => navigation.navigate('BookBarcode')}>
+          <TouchableOpacity style={styles.touchBox} onPress={() => navigation.navigate('BookBarCode')}>
             <View style={styles.touchBoxInfo}>
               <Text style={styles.text}>도서대출증</Text>
             </View>
