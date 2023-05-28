@@ -3,6 +3,10 @@ import { StyleSheet,View, Text,TouchableOpacity,Image, TextInput, Pressable, Key
 import { useState } from "react";
 import DropDownPicker from 'react-native-dropdown-picker';
 import AutoHeightTextInput from "../components/community/AutoHeightTextInput";
+import image from "../assets/community/image.png";
+import location from "../assets/community/location.png";
+import poll from "../assets/community/poll.png"
+import pin from "../assets/community/pin.png"
 
 const NewPost = ({navigation}) => {
     const [open, setOpen] = useState(false);
@@ -62,9 +66,17 @@ const NewPost = ({navigation}) => {
                     />
                     <View>
                         <AutoHeightTextInput placeholder={"내용을 입력하세요."}/>
+                        <Text style={styles.contentLimit}>0 / 500자</Text>
                     </View>
-                    <Text style={styles.contentLimit}>0 / 500자</Text>
-                    
+                    <View style={styles.attachBox}>
+                        <Image source={image} />
+                        <Image source={poll} />
+                        <Image source={pin} />
+                        <Image source={location} />
+                        <TouchableOpacity>
+                            <Text style={{paddingLeft: 128}}>미리보기</Text>
+                        </TouchableOpacity>
+                    </View>
                 </View>
             </View>
         </Pressable>
@@ -72,13 +84,23 @@ const NewPost = ({navigation}) => {
 }
 
 const styles = StyleSheet.create({
+    attachBox: {
+        flexDirection: 'row',
+        borderTopColor: '#F3F3F3',
+        borderTopWidth: 1,
+        alignItems: 'center',
+        position: 'absolute',
+        gap: 20,
+        padding: 16,
+        top: 610,
+        // left: 310,
+    },
     contentLimit: {
         position: 'absolute',
-        top: 600,
+        top: 480,
         left: 310,
         // textAlign: 'right',
-        backgroundColor: 'pink',
-        paddingBottom: 16,
+        // paddingBottom: 16,
         // paddingTop: 16,
         color: '#8A8A8A',
     },
