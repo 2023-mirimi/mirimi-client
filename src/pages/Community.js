@@ -1,8 +1,11 @@
 import React from "react";
 import { Text, View, StyleSheet,Image, TouchableOpacity, ScrollView } from 'react-native';
 import Header from "../components/header";
+import { useNavigation } from "@react-navigation/native";
 
-const Community = ({navigation}) => {
+const Community = () => {
+    const navigation = useNavigation()
+    
     return(
         <View style={styles.container}>
             <Header name={"커뮤니티"}/>

@@ -7,8 +7,10 @@ import image from "../assets/community/image.png";
 import location from "../assets/community/location.png";
 import poll from "../assets/community/poll.png"
 import pin from "../assets/community/pin.png"
+import { useNavigation } from "@react-navigation/native";
 
-const NewPost = ({navigation}) => {
+const NewPost = () => {
+	const navigation = useNavigation()
     const [open, setOpen] = useState(false);
     const [category, setCategory] = useState(null);
     const [items, setItems] = useState([
