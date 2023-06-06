@@ -1,6 +1,10 @@
 import React, { Component } from "react";
 import { Text, View, Image, Dimensions } from "react-native";
 import Swiper from "react-native-swiper";
+import Banner1 from "../../assets/home/banner-1.png";
+import Banner2 from "../../assets/home/banner-2.png";
+import Banner3 from "../../assets/home/banner-3.png";
+
 const { width } = Dimensions.get("window");
 
 const styles = {
@@ -20,6 +24,7 @@ const styles = {
 
   slide1: {
     flex: 1,
+    height: 168,
     justifyContent: "center",
     alignItems: "center",
     backgroundColor: "#9DD6EB",
@@ -62,9 +67,15 @@ export default function HomeSwpier() {
         showsPagination={false}
         autoplay
       >
-        <View style={styles.slide1}></View>
-        <View style={styles.slide2}></View>
-        <View style={styles.slide3}></View>
+        <View style={styles.slide1}>
+          <Image source={Banner1} />
+        </View>
+        <View style={styles.slide2}>
+          <Image source={Banner2} />
+        </View>
+        <View style={styles.slide3}>
+          <Image source={Banner3} />
+        </View>
       </Swiper>
     </View>
   );
