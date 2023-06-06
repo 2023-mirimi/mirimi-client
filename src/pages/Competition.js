@@ -1,4 +1,9 @@
 import React from "react";
+
+// 로그 박스 무시하는 코드?!
+import { LogBox } from "react-native";
+LogBox.ignoreLogs(["Sending"]);
+
 import { Text, StyleSheet, View, useWindowDimensions } from "react-native";
 import { TabView, SceneMap, TabBar } from "react-native-tab-view";
 import { createStackNavigator } from "@react-navigation/stack";
