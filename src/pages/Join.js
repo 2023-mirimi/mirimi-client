@@ -1,8 +1,11 @@
+import { useNavigation } from "@react-navigation/native";
 import React from "react";
 import { View, Text, TouchableOpacity, Image, StyleSheet, TextInput, ScrollView } from "react-native";
 import BouncyCheckbox from "react-native-bouncy-checkbox";
 
-const Join = ({navigation}) => {
+const Join = () => {
+	const navigation = useNavigation()
+    
     return(
         <ScrollView style={{backgroundColor: '#FFF', height: 812}}>
             <View style={styles.header}>

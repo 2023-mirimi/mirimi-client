@@ -9,6 +9,8 @@ import MyPage from "../pages/MyPage";
 import BookBarCode from "../pages/BookBarcode";
 import BottomTabNavigator from "./BottomTabNavigator";
 import DrawerNavigator from "./DrawerTabNavigator";
+import CouncilCard from "../components/school/councilCard";
+import Council from "../pages/Council";
 
 const Stack = createNativeStackNavigator();
 
@@ -24,6 +26,8 @@ const MyStack = () => {
             <Stack.Screen name="NewPost" component={NewPost} options={{headerShown: false}}/>
             <Stack.Screen name="MyPage" component={MyPage} options={{headerShown: false}}/>
             <Stack.Screen name="BookBarCode" component={BookBarCode} options={{headerShown: false}}/>
+            <Stack.Screen name="CouncilCard" component={CouncilCard} options={{headerShown: false}}/>
+            <Stack.Screen name="Council" component={Council} options={{headerShown: false}}/>
         </Stack.Navigator>
     );
 }

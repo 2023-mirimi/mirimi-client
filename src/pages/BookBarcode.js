@@ -4,7 +4,7 @@ import save from '../assets/mypage/save.png';
 import saved from '../assets/mypage/saved.png';
 import { useState } from 'react';
 
-const BookBarcode = ({navigation}) => {
+const BookBarcode = () => {
     const [isHovering, setIsHovering] = useState(0);
 
     return (

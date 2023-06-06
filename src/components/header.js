@@ -1,7 +1,8 @@
 import React from "react";
 import { StyleSheet, View, TouchableOpacity, Image, Text } from "react-native";
 
-const Header = ({navigation, name}) => {
+const Header = ({name}) => {
+
     return(
         <View style={styles.header}>
         <TouchableOpacity style={styles.menuBtn}>
