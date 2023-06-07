@@ -1,9 +1,11 @@
+import { useNavigation } from '@react-navigation/native';
 import React, { useState } from 'react'
 import { View, Image, StyleSheet, TextInput, Text, TouchableOpacity, Button } from "react-native";
 import BouncyCheckbox from "react-native-bouncy-checkbox";
 import Icon from 'react-native-vector-icons/FontAwesome';
 
-export default Login = ({navigation}) => {
+export default Login = () => {
+	const navigation = useNavigation()
     const [isSecureEntry, setIsSecureEntry] = useState(true);
     return(
         <View style={styles.container}>
