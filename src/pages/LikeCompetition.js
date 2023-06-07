@@ -11,19 +11,6 @@ const LikeCompetition = () => {
 
   return (
     <View style={styles.container}>
-      <Picker
-        selectedValue={country}
-        onValueChange={(value, index) => setCountry(value)}
-        mode="dropdown" // Android only
-        style={styles.picker}
-      > 
-        <Picker.Item label={picker} value="Unknown" />
-        <Picker.Item label="sydney" value="Australia" />
-        <Picker.Item label="Belgium" value="Belgium" />
-        <Picker.Item label="Canada" value="Canada" />
-        <Picker.Item label="India" value="India" />
-        <Picker.Item label="Japan" value="Japan" />
-      </Picker>
       <ScrollView style={styles.scroll}>
         <View style={styles.cardContainer}>
           <CompetitionCard/>
