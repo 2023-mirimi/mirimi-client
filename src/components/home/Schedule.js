@@ -1,5 +1,6 @@
 import React from "react";
-import { View, Text, StyleSheet, FlatList } from "react-native";
+import { View, Text, StyleSheet, FlatList, useState } from "react-native";
+import { TextInput } from "react-native-gesture-handler";
 
 const DATA = [
   {
@@ -77,20 +78,38 @@ const DATA = [
   {
     title: 15,
   },
+  {
+    title: 15,
+  },
+  {
+    title: 15,
+  },
+  {
+    title: 15,
+  },
+  {
+    title: 15,
+  },
+  {
+    title: 15,
+  },
 ];
 
+// const [disable, setDisable] = useState(false);
 const Item = ({ title, width }) => (
   <View
     style={{
-      width: 70,
-      height: 70,
-      backgroundColor: "#f9c2ff",
+      width: 60,
+      height: 60,
+      backgroundColor: "#FFFFFF",
       alignItems: "center",
       paddingTop: 30,
       borderColor: "#E9E9E9",
-      borderWidth: 1,
+      borderWidth: 0.3,
     }}
   >
+    {/* https://reactnative.dev/docs/handling-touches#touchables */}
+    <TextInput editable={disable} selectTextOnFocus={disable} />
     <Text style={{ color: "black", fontSize: 14 }}>{title}</Text>
   </View>
 );
@@ -118,7 +137,9 @@ const style = StyleSheet.create({
     flex: 1,
     marginTop: 20,
     marginVertical: 8,
+    marginLeft: 49,
     marginHorizontal: 16,
+    borderRadius: 12,
   },
 
   title: {
