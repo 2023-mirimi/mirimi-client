@@ -1,10 +1,10 @@
 import * as React from 'react';
 import { StyleSheet, Text, View, TouchableOpacity, Image, useWindowDimensions, Linking } from 'react-native';
-import background from '../assets/councilBg.png';
-import profile from '../assets/councilProfile.png';
-import music from '../assets/music.png';
-import link from '../assets/link.png';
-import instagram from '../assets/instagram.png';
+import background from '../assets/school/councilBg.png';
+import profile from '../assets/school/councilProfile.png';
+import music from '../assets/school/music.png';
+import link from '../assets/school/link.png';
+import instagram from '../assets/school/instagram.png';
 import { TabView, SceneMap, TabBar } from 'react-native-tab-view';
 import CouncilTab from '../components/school/councilTab';
 const FirstRoute = () => (

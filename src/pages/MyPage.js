@@ -28,7 +28,7 @@ const MyPage = () => {
           </TouchableOpacity>
         </View>
         <View style={styles.box2}>
-          <TouchableOpacity style={styles.touchBox} onPress={() => navigation.navigate('공모전')}>
+          <TouchableOpacity style={styles.touchBox} onPress={() => navigation.navigate('LikeCompetition')}>
             <View style={styles.touchBoxInfo}>
               <Image source={cup}/>
               <Text style={styles.text}>공모전</Text>
@@ -36,7 +36,7 @@ const MyPage = () => {
             <Image source={move}/>
           </TouchableOpacity>
           <View style={styles.hr}/>
-          <TouchableOpacity style={styles.touchBox} onPress={() => navigation.navigate('공모전')}>
+          <TouchableOpacity style={styles.touchBox} onPress={() => navigation.navigate('LikeCommunity')}>
             <View style={styles.touchBoxInfo}>
               <Image source={chat}/>
               <Text style={styles.text}>커뮤니티</Text>
