@@ -1,5 +1,5 @@
 import { StyleSheet, View, Image, Text } from 'react-native';
-import CompetitionCard from '../components/school/competitionCard'
+import CompetitionCard from '../components/competition/competitionCard'
 import { ScrollView } from 'react-native-gesture-handler';
 
 const LikeCompetition = () => {
