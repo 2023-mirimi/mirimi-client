@@ -1,6 +1,6 @@
 import { StyleSheet, Text, View, TouchableOpacity, Image } from 'react-native';
-import filledHeart from '../assets/filledHeart.png';
-import profile from '../assets/cat.png';
+import filledHeart from '../../assets/filledHeart.png';
+import profile from '../../assets/cat.png';
 
 const CompetitionCard = () => {
   return (
