@@ -1,14 +1,8 @@
 import { StyleSheet, View, Image, Text } from 'react-native';
 import CompetitionCard from '../components/school/competitionCard'
 import { ScrollView } from 'react-native-gesture-handler';
-import { Picker } from "@react-native-picker/picker";
-import { useState } from 'react';
-import controls from '../assets/controls.png';
 
 const LikeCompetition = () => {
-  const [country, setCountry] = useState('Unknown');
-  const picker = <Text><Image source={controls}/>인기순</Text>;
-
   return (
     <View style={styles.container}>
       <ScrollView style={styles.scroll}>
