@@ -1,8 +1,9 @@
 import React from "react";
 import { Text } from "react-native-svg";
+import CompetitionCard from "./competitionCard";
 
 const AllTab = () => {
-  return <Text>공모전!!!!</Text>;
+  return <CompetitionCard />;
 };
 
 export default AllTab;
