@@ -95,7 +95,6 @@ const DATA = [
   },
 ];
 
-// const [disable, setDisable] = useState(false);
 const Item = ({ title, width }) => (
   <View
     style={{
@@ -109,7 +108,6 @@ const Item = ({ title, width }) => (
     }}
   >
     {/* https://reactnative.dev/docs/handling-touches#touchables */}
-    <TextInput editable={disable} selectTextOnFocus={disable} />
     <Text style={{ color: "black", fontSize: 14 }}>{title}</Text>
   </View>
 );

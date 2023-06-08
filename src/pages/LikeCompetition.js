@@ -8,15 +8,6 @@ const LikeCompetition = () => {
       <ScrollView style={styles.scroll}>
         <View style={styles.cardContainer}>
           <CompetitionCard/>
-          <CompetitionCard/>
-          <CompetitionCard/>
-          <CompetitionCard/>
-          <CompetitionCard/>
-          <CompetitionCard/>
-          <CompetitionCard/>
-          <CompetitionCard/>
-          <CompetitionCard/>
-          <CompetitionCard/>
         </View>
       </ScrollView>
     </View>
