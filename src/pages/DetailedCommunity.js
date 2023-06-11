@@ -6,7 +6,6 @@ import horn from "../assets/community/horn.png";
 import profile from "../assets/mypage/profile.png";
 import Return from "../assets/community/return.png";
 import More from "../assets/community/more.png";
-import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 
 const DetailedCommunity = ({navigation}) => {
     const [replyValue, setReplyValue] = useState('');
