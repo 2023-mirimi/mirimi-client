@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { View, Text, FlatList, StyleSheet } from "react-native";
 
-const MealTest = () => {
+const MealFlatlist = () => {
   const [meals, setMeals] = useState([]);
 
   let now = new Date();
@@ -42,15 +42,20 @@ const MealTest = () => {
   };
 
   const renderMeal = ({ item }) => {
+    const mealDate = new Date(
+      parseInt(item.MLSV_YMD.slice(0, 4)),
+      parseInt(item.MLSV_YMD.slice(4, 6)) - 1,
+      parseInt(item.MLSV_YMD.slice(6, 8))
+    );
+    const weekdays = ["일", "월", "화", "수", "목", "금", "토"];
+    const formattedDate = `${weekdays[mealDate.getDay()]} ${mealDate.getMonth() + 1}.${mealDate.getDate()}`;
+
     return (
       <View style={styles.element}>
         <View style={styles.row}>
-          <View>
-            <Text style={styles.day}>{item.MLSV_YMD.substr(5, 6)}</Text>
-          </View>
           <View style={styles.date}>
-            <Text>{item.month}</Text>
-            <Text>{item.date}</Text>
+            <Text style={styles.weekday}>{weekdays[mealDate.getDay()]}</Text>
+            <Text style={styles.day}>{mealDate.getMonth() + 1}.{mealDate.getDate()}</Text>
           </View>
           <View>
             <Text style={styles.body}>{item.isToday}</Text>
@@ -104,7 +109,7 @@ const MealTest = () => {
   );
 };
 
-export default MealTest;
+export default MealFlatlist;
 
 const styles = StyleSheet.create({
   container: {
@@ -162,12 +167,16 @@ const styles = StyleSheet.create({
     marginBottom: 24,
   },
 
-  day: {
+  date: {
+    display: "flex",
+    flexDirection: "row"
+  },
+  weekday: {
     fontSize: 20,
     fontWeight: 500,
   },
 
-  date: {
+  day: {
     display: "flex",
     flexDirection: "row",
   },
