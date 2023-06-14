@@ -10,8 +10,15 @@ import BookBarCode from "../pages/BookBarcode";
 import BottomTabNavigator from "./BottomTabNavigator";
 import { Text } from "react-native-svg";
 import DrawerNavigator from "./DrawerTabNavigator";
+<<<<<<< HEAD
 import back from "../assets/back.png";
 import { Image } from "react-native";
+=======
+import CouncilCard from "../components/school/councilCard";
+import Council from "../pages/Council";
+import LikeCommunity from "../pages/LikeCommunity";
+import LikeCompetition from "../pages/LikeCompetition";
+>>>>>>> 0376288bc699600fd5cd79ad5968fbdb95cfa04b
 
 const Stack = createNativeStackNavigator();
 
@@ -33,6 +40,10 @@ const MyStack = () => {
             <Stack.Screen name="NewPost" component={NewPost} options={{headerShown: false}}/>
             <Stack.Screen name="MyPage" component={MyPage} options={{headerShown: false}}/>
             <Stack.Screen name="BookBarCode" component={BookBarCode} options={{headerShown: false}}/>
+            <Stack.Screen name="CouncilCard" component={CouncilCard} options={{headerShown: false}}/>
+            <Stack.Screen name="Council" component={Council} options={{headerShown: false}}/>
+            <Stack.Screen name="LikeCommunity" component={LikeCommunity} options={{headerShown: false}}/>
+            <Stack.Screen name="LikeCompetition" component={LikeCompetition} options={{headerShown: false}}/>
         </Stack.Navigator>
     );
 }

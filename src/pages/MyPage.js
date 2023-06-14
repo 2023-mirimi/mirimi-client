@@ -6,8 +6,11 @@ import cup from '../assets/icons/cup.png';
 import chat from '../assets/icons/chat.png';
 
 import Header from '../components/header';
+import { useNavigation } from '@react-navigation/native';
 
-const MyPage = ({navigation}) => {
+const MyPage = () => {
+	const navigation = useNavigation()
+
   return (
     <View style={styles.container}>
       <Header name={"마이페이지"}/>
@@ -25,7 +28,7 @@ const MyPage = ({navigation}) => {
           </TouchableOpacity>
         </View>
         <View style={styles.box2}>
-          <TouchableOpacity style={styles.touchBox} onPress={() => navigation.navigate('공모전')}>
+          <TouchableOpacity style={styles.touchBox} onPress={() => navigation.navigate('LikeCompetition')}>
             <View style={styles.touchBoxInfo}>
               <Image source={cup}/>
               <Text style={styles.text}>공모전</Text>
@@ -33,7 +36,7 @@ const MyPage = ({navigation}) => {
             <Image source={move}/>
           </TouchableOpacity>
           <View style={styles.hr}/>
-          <TouchableOpacity style={styles.touchBox} onPress={() => navigation.navigate('공모전')}>
+          <TouchableOpacity style={styles.touchBox} onPress={() => navigation.navigate('LikeCommunity')}>
             <View style={styles.touchBoxInfo}>
               <Image source={chat}/>
               <Text style={styles.text}>커뮤니티</Text>

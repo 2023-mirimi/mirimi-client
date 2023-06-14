@@ -1,6 +1,10 @@
 import React, { Component } from "react";
 import { Text, View, Image, Dimensions } from "react-native";
+import { WithLocalSvg } from "react-native-svg";
 import Swiper from "react-native-swiper";
+import Banner1 from "../../assets/home/banner-2.svg";
+import Banner2 from "../../assets/home/banner-3.svg";
+
 const { width } = Dimensions.get("window");
 
 const styles = {
@@ -20,6 +24,7 @@ const styles = {
 
   slide1: {
     flex: 1,
+    height: 168,
     justifyContent: "center",
     alignItems: "center",
     backgroundColor: "#9DD6EB",
@@ -62,9 +67,12 @@ export default function HomeSwpier() {
         showsPagination={false}
         autoplay
       >
-        <View style={styles.slide1}></View>
-        <View style={styles.slide2}></View>
-        <View style={styles.slide3}></View>
+        <View style={styles.slide2}>
+          <WithLocalSvg asset={Banner1} />
+        </View>
+        <View style={styles.slide3}>
+          <WithLocalSvg asset={Banner2} />
+        </View>
       </Swiper>
     </View>
   );

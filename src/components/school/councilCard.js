@@ -3,12 +3,15 @@ import council from '../../assets/school/council.png';
 import image from '../../assets/school/image.png';
 import chat from '../../assets/school/chat.png';
 import like from '../../assets/school/like.png';
+import { useNavigation } from '@react-navigation/native';
 
-const CouncilCard = ({navigation}) => {
+const CouncilCard = () => {
+	const navigation = useNavigation()
+	
   return (
     <View style={styles.container}>
 			<View style={styles.nav}>
-				<TouchableOpacity onPress={() => navigation.navigate('학생회')}><Image source={council}/></TouchableOpacity>
+				<TouchableOpacity onPress={() => navigation.navigate('Council')}><Image source={council}/></TouchableOpacity>
 				<Text style={styles.name}>학생회</Text>
 				<Text style={styles.date}>2023.00.00</Text>
 			</View>
@@ -109,4 +112,4 @@ const styles = StyleSheet.create({
 	}
 });
 
-export default CouncilCard;
+export default (CouncilCard);

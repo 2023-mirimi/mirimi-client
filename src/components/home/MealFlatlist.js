@@ -1,70 +1,79 @@
-import React from "react";
-import { View, Text, StyleSheet, FlatList } from "react-native";
-
-// 급식 API가 들어갈 자리
-const DATA = [
-  {
-    id: 1,
-    day: "월",
-    month: 4,
-    date: 17,
-    isToday: true,
-    bodys: "왕감자 / 유부장국 / 돌바잔 / 미트볼 / 배추김치",
-  },
-  {
-    id: 2,
-    day: "화",
-    month: 4,
-    date: 18,
-    isToday: true,
-    bodys: "왕감자 / 유부장국 / 돌바잔 / 미트볼 / 배추김치",
-  },
-  {
-    id: 3,
-    day: "수",
-    month: 4,
-    date: 19,
-    isToday: true,
-    bodys: "왕감자 / 유부장국 / 돌바잔 / 미트볼 / 배추김치",
-  },
-  {
-    id: 4,
-    day: "목",
-    month: 4,
-    date: 20,
-    isToday: true,
-    bodys: "왕감자 / 유부장국 / 돌바잔 / 미트볼 / 배추김치",
-  },
-];
-
-const renderItem = ({ item }) => {
-  return (
-    <View style={styles.element}>
-      <View style={styles.row}>
-        <View>
-          <Text style={styles.day}>{item.day}</Text>
-        </View>
-        <View style={styles.date}>
-          <Text>{item.month}</Text>
-          <Text>{item.date}</Text>
-        </View>
-        <View>
-          <Text style={styles.body}>{item.isToday}</Text>
-        </View>
-      </View>
-      <View style={styles.mealInfo}>
-        <Text>아침</Text>
-        <Text>{item.bodys}</Text>
-        <Text>점심</Text>
-        <Text>{item.bodys}</Text>
-        <Text>저녁</Text>
-        <Text>{item.bodys}</Text>
-      </View>
-    </View>
-  );
-};
+import React, { useState, useEffect } from "react";
+import { View, Text, FlatList, StyleSheet } from "react-native";
 
 const MealFlatlist = () => {
+  const [meals, setMeals] = useState([]);
+
+  let now = new Date();
+  let year = now.getFullYear();
+  let month = now.getMonth() + 1; // 0월 ~ 11월
+  let fromdate = now.getDate(); // 오늘
+  // 오늘부터 모레까지의 급식 -> 3일치
+  let todate = now.getDate() + 10; // 모레
+
+  useEffect(() => {
+    const fetchMeals = async () => {
+      try {
+        const KEY = "c39707fb3d35425aac169b2392b44921";
+        const TYPE = "json";
+        const CODE = "B10";
+        const ATBT = "7010569";
+        const MLSVFROM = `${year}${month
+          .toString()
+          .padStart(2, "0")}${fromdate}`;
+        const MLSVTO = `${year}${month.toString().padStart(2, "0")}${todate}`;
+        const url = `https://open.neis.go.kr/hub/mealServiceDietInfo?key=${KEY}&type=${TYPE}&&ATPT_OFCDC_SC_CODE=${CODE}&SD_SCHUL_CODE=${ATBT}&MLSV_FROM_YMD=${MLSVFROM}&MLSV_TO_YMD=${MLSVTO}`;
+        const response = await fetch(url);
+        const data = await response.json();
+        console.log(JSON.stringify(data));
+        const mealsData = data.mealServiceDietInfo[1].row;
+        setMeals(mealsData);
+        console.log(url);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchMeals();
+  }, []);
+
+  const parseMealsByType = (type) => {
+    return meals.filter((meal) => meal.MMEAL_SC_NM === type);
+  };
+
+  const renderMeal = ({ item }) => {
+    const mealDate = new Date(
+      parseInt(item.MLSV_YMD.slice(0, 4)),
+      parseInt(item.MLSV_YMD.slice(4, 6)) - 1,
+      parseInt(item.MLSV_YMD.slice(6, 8))
+    );
+    const weekdays = ["일", "월", "화", "수", "목", "금", "토"];
+    const formattedDate = `${weekdays[mealDate.getDay()]} ${mealDate.getMonth() + 1}.${mealDate.getDate()}`;
+
+    return (
+      <View style={styles.element}>
+        <View style={styles.row}>
+          <View style={styles.date}>
+            <Text style={styles.weekday}>{weekdays[mealDate.getDay()]}</Text>
+            <Text style={styles.day}>{mealDate.getMonth() + 1}.{mealDate.getDate()}</Text>
+          </View>
+          <View>
+            <Text style={styles.body}>{item.isToday}</Text>
+          </View>
+        </View>
+        <View style={styles.mealInfo}>
+          <Text>아침</Text>
+          <Text>{item.DDISH_NM}</Text>
+          <Text>점심</Text>
+          <Text>{item.DDISH_NM}</Text>
+          <Text>저녁</Text>
+          <Text>{item.DDISH_NM}</Text>
+        </View>
+      </View>
+    );
+  };
+  const mealsString = JSON.stringify(meals);
+
   return (
     <View style={styles.container}>
       <View style={styles.mealDiv}>
@@ -73,10 +82,29 @@ const MealFlatlist = () => {
       </View>
       <FlatList
         horizontal={true}
-        data={DATA}
-        keyExtractor={(item) => item.id}
-        renderItem={renderItem}
+        data={parseMealsByType("조식")}
+        renderItem={renderMeal}
+        keyExtractor={(item, index) => index.toString()}
       />
+      {/* <FlatList
+        data={parseMealsByType("조식")}
+        renderItem={renderMeal}
+        keyExtractor={(item, index) => index.toString()}
+      />
+
+      <Text>중식</Text>
+      <FlatList
+        data={parseMealsByType("중식")}
+        renderItem={renderMeal}
+        keyExtractor={(item, index) => index.toString()}
+      />
+
+      <Text>석식</Text>
+      <FlatList
+        data={parseMealsByType("석식")}
+        renderItem={renderMeal}
+        keyExtractor={(item, index) => index.toString()}
+      /> */}
     </View>
   );
 };
@@ -139,12 +167,16 @@ const styles = StyleSheet.create({
     marginBottom: 24,
   },
 
-  day: {
+  date: {
+    display: "flex",
+    flexDirection: "row"
+  },
+  weekday: {
     fontSize: 20,
     fontWeight: 500,
   },
 
-  date: {
+  day: {
     display: "flex",
     flexDirection: "row",
   },

@@ -1,7 +1,9 @@
 import React from "react";
 import { Text, View, StyleSheet,Image, TouchableOpacity, ScrollView, FlatList } from 'react-native';
 import Header from "../components/header";
+import { useNavigation } from "@react-navigation/native";
 
+<<<<<<< HEAD
 const DATA = [
     {
         id: 1,
@@ -49,6 +51,11 @@ const Community = ({navigation, routes}) => {
         );
     }
 
+=======
+const Community = () => {
+    const navigation = useNavigation()
+    
+>>>>>>> 0376288bc699600fd5cd79ad5968fbdb95cfa04b
     return(
         <View style={styles.container}>
             <Header name={"커뮤니티"}/>
