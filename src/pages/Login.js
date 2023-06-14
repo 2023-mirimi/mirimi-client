@@ -2,8 +2,17 @@ import React, { useState } from 'react'
 import { View, Image, StyleSheet, TextInput, Text, TouchableOpacity, Button,Alert } from "react-native";
 import BouncyCheckbox from "react-native-bouncy-checkbox";
 import axios from 'axios';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export default Login = ({navigation}) => {
+    const UserData = async (data) => {
+        try {
+            // const jsonData = 
+            await AsyncStorage.setItem('@storage_key')
+        } catch (error) {
+            
+        }
+    }
     const [isSecureEntry, setIsSecureEntry] = useState(true);
     const [inputData, setInputData] = useState({
         email: '',
