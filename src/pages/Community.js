@@ -1,8 +1,54 @@
 import React from "react";
-import { Text, View, StyleSheet,Image, TouchableOpacity, ScrollView } from 'react-native';
+import { Text, View, StyleSheet,Image, TouchableOpacity, ScrollView, FlatList } from 'react-native';
 import Header from "../components/header";
 
-const Community = ({navigation}) => {
+const DATA = [
+    {
+        id: 1,
+        category: '일상',
+        title: '다들 졸려죽을 땐 어떻게 함?',
+        user: '3311 하진',
+        date: '2023-06-13',
+        views: '59',
+        comments: '2345',
+        likes: '1234'
+    },
+    {
+        id: 2,
+        category: '일상',
+        title: '일이삼사오육칠팔구십빠 제발 날 집에 좀 보내줭',
+        user: '3311 하진',
+        date: '2023-06-13',
+        views: '59',
+        comments: '2345',
+        likes: '1234'
+    }
+]
+
+const Community = ({navigation, routes}) => {
+    // const {post} = useParams();
+    const renderItem = ({item}) => {
+        return(
+            <View>
+                <TouchableOpacity onPress={()=>navigation.navigate("DetailedCommunity", DATA)} style={styles.postBox} >
+                    <Text style={styles.postCategory}>{item.category}</Text>
+                    <Text style={styles.postTitle}>{item.title}</Text>
+                    <View style={styles.postInfo}>
+                        <Text style={styles.postInfoTxt}>{item.user}  |</Text>
+                        <Text style={styles.postInfoTxt}>{item.date}  |</Text>
+                        <Text style={styles.postInfoTxt}>{item.views}</Text>
+                    </View>
+                    <View style={styles.postLikes}>
+                        <Image source={require('../assets/community/comment.png')}></Image>
+                        <Text style={styles.postLikesTxt}>{item.comments}</Text>
+                        <Image source={require('../assets/community/thumb.png')}></Image>
+                        <Text style={styles.postLikesTxt}>{item.likes}</Text>
+                    </View>
+                </TouchableOpacity>
+            </View>
+        );
+    }
+
     return(
         <View style={styles.container}>
             <Header name={"커뮤니티"}/>
@@ -21,27 +67,13 @@ const Community = ({navigation}) => {
                     <Text style={styles.categoryTxt}>공모전</Text>
                 </TouchableOpacity>
             </View>
-            {/* 게시글 리스트 */}
-            <ScrollView>
-                <View style={styles.box}>
-                    <TouchableOpacity style={styles.postBox} onPress={()=>navigation.navigate("DetailedCommunity")}>
-                        <Text style={styles.postCategory}>일상</Text>
-                        <Text style={styles.postTitle}>안녕하세요 집에 가고 싶지만 집에 갈 수 없워용 제발 날 집에 보내줭~!~!~!</Text>
-                        <View style={styles.postInfo}>
-                            <Text style={styles.postInfoTxt}>작성자  |</Text>
-                            <Text style={styles.postInfoTxt}>2023.05.18  |</Text>
-                            <Text style={styles.postInfoTxt}>{Number}views</Text>
-                        </View>
-                        <View style={styles.postLikes}>
-                            <Image source={require('../assets/community/comment.png')}></Image>
-                            <Text style={styles.postLikesTxt}>1,234</Text>
-                            <Image source={require('../assets/community/thumb.png')}></Image>
-                            <Text style={styles.postLikesTxt}>1,234</Text>
-                        </View>
-                    </TouchableOpacity>
-                </View>
-            </ScrollView>
-            <TouchableOpacity style={styles.addPost} onPress={()=> navigation.navigate("NewPost")}>
+            <View style={styles.box}>
+                <FlatList 
+                    data={DATA}
+                    keyExtractor={item => item.id}
+                    renderItem={renderItem}/>
+            </View>
+            <TouchableOpacity style={styles.addPost} onPress={()=> navigation.navigate('NewPost')}>
                     <Image source={require('../assets/community/floating_btn.png')}></Image>
             </TouchableOpacity>
         </View>
@@ -86,15 +118,16 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         marginTop: 44,
         marginLeft: 16,
-        marginRight: 16
+        marginRight: 16,
     },
     postBox: {
         width: 343,
         padding: 16,
-        height: 152,
+        height: 142,
         borderColor: '#E8E8E8',
         borderWidth: 1,
-        borderRadius: 10
+        borderRadius: 10,
+        marginBottom: 16,
     },
     postCategory: {
         fontSize: 14,
@@ -117,7 +150,7 @@ const styles = StyleSheet.create({
     },
     postLikes: {
         flexDirection: 'row',
-        marginTop: 18,
+        marginTop: 28,
         justifyContent: 'flex-end',
         gap: 6,
         alignItems: 'center'

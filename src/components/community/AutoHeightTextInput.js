@@ -1,8 +1,9 @@
 import React from "react";
 import { TextInput } from "react-native";
 import { useState } from "react";
+import NewPost from "../../pages/NewPost";
 
-const AutoHeightTextInput = ({placeholder}) => {
+const AutoHeightTextInput = ({placeholder, post}) => {
     const [inputHeight, setInputHeight] = useState(0);
 
     const handleContentSizeChange = (event) => {
