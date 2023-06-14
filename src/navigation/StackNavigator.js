@@ -8,11 +8,17 @@ import NewPost from "../pages/NewPost";
 import MyPage from "../pages/MyPage";
 import BookBarCode from "../pages/BookBarcode";
 import BottomTabNavigator from "./BottomTabNavigator";
+import { Text } from "react-native-svg";
 import DrawerNavigator from "./DrawerTabNavigator";
+<<<<<<< HEAD
+import back from "../assets/back.png";
+import { Image } from "react-native";
+=======
 import CouncilCard from "../components/school/councilCard";
 import Council from "../pages/Council";
 import LikeCommunity from "../pages/LikeCommunity";
 import LikeCompetition from "../pages/LikeCompetition";
+>>>>>>> 0376288bc699600fd5cd79ad5968fbdb95cfa04b
 
 const Stack = createNativeStackNavigator();
 
@@ -24,7 +30,13 @@ const MyStack = () => {
             <Stack.Screen name="Root" component={BottomTabNavigator} options={{headerShown: false}}/>
             <Stack.Screen name="Join" component={Join} options={{headerShown: false}}/>
             <Stack.Screen name="Community" component={Community} options={{headerShown: false}}/>
-            <Stack.Screen name="DetailedCommunity" component={DetailedCommunity} options={{headerShown: true}}/>
+            <Stack.Screen name="DetailedCommunity" component={DetailedCommunity} 
+                options={{
+                    title: '게시글', 
+                    headerTitleStyle: {fontWeight: '500'}, 
+                    headerBackTitle: '뒤로가기',
+                    headerTintColor: 'black',
+                }}/>
             <Stack.Screen name="NewPost" component={NewPost} options={{headerShown: false}}/>
             <Stack.Screen name="MyPage" component={MyPage} options={{headerShown: false}}/>
             <Stack.Screen name="BookBarCode" component={BookBarCode} options={{headerShown: false}}/>

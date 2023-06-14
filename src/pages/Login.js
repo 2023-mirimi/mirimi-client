@@ -1,19 +1,66 @@
 import { useNavigation } from '@react-navigation/native';
 import React, { useState } from 'react'
-import { View, Image, StyleSheet, TextInput, Text, TouchableOpacity, Button } from "react-native";
+import { View, Image, StyleSheet, TextInput, Text, TouchableOpacity, Button,Alert } from "react-native";
 import BouncyCheckbox from "react-native-bouncy-checkbox";
-import Icon from 'react-native-vector-icons/FontAwesome';
+import axios from 'axios';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
-export default Login = () => {
-	const navigation = useNavigation()
+export default Login = ({navigation}) => {
+    const UserData = async (data) => {
+        try {
+            // const jsonData = 
+            await AsyncStorage.setItem('@storage_key')
+        } catch (error) {
+            
+        }
+    }
     const [isSecureEntry, setIsSecureEntry] = useState(true);
+    const [inputData, setInputData] = useState({
+        email: '',
+        pw: ''
+    });
+    const onPressLoginBtn = (data) => {
+        axios.post('http://10.96.123.101:3300/account/login', data, {
+            headers: {
+                'Content-Type': 'application/json',
+            }}).then(res => {
+                if(res.data){
+                    console.log('res.status: ', res.status);
+                    console.log(res.data);
+                    Alert.alert('Welcome',`환영합니다. ${res.data.name}님`)
+                    navigation.navigate("Root");
+                } else if(res.data === false) {
+                    Alert.alert('Login Fail','올바른 아이디 또는 비밀번호 입력하시오.');
+                }
+            }).catch(err => {
+                throw err;
+            })
+    }
+    
+    const handleInputChange = (key, value) => {
+        setInputData((prevInputValue) => ({
+          ...prevInputValue,
+          [key]: value,
+        }));
+    };
+    
     return(
         <View style={styles.container}>
             <Image style={styles.icon} source={require('../assets/icon.png')}></Image>
             <Image source={require('../assets/mirimi.png')}></Image>
             <View style={styles.login}>
-                <TextInput style={styles.inputTxt} placeholder='이메일'></TextInput>
-                <TextInput style={styles.inputTxt} placeholder='비밀번호' secureTextEntry={isSecureEntry}></TextInput>
+                <TextInput 
+                    value={inputData.email}
+                    style={styles.inputTxt} 
+                    placeholder='이메일'
+                    onChangeText={(value)=> handleInputChange('email', value)} 
+                    />
+                <TextInput 
+                value={inputData.pw}
+                style={styles.inputTxt} 
+                placeholder='비밀번호' 
+                onChangeText={(value) =>  handleInputChange('pw', value)}
+                secureTextEntry={isSecureEntry}/>
                 <View style={styles.showPW}>
                     <Text style={styles.showPwTxt}>비밀번호 보기</Text>
                     <BouncyCheckbox 
@@ -26,7 +73,8 @@ export default Login = () => {
                         innerIconStyle={{ borderWidth: 0 }}
                     />
                 </View>
-                <TouchableOpacity onPress={() => navigation.navigate("Root")}> 
+                <TouchableOpacity onPress={() => 
+                    onPressLoginBtn(inputData)}> 
                     <View style={styles.button}>
                         <Text style={styles.buttonTxt}>로그인</Text>
                     </View>
