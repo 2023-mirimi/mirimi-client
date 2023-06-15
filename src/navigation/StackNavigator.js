@@ -10,15 +10,10 @@ import BookBarCode from "../pages/BookBarcode";
 import BottomTabNavigator from "./BottomTabNavigator";
 import { Text } from "react-native-svg";
 import DrawerNavigator from "./DrawerTabNavigator";
-<<<<<<< HEAD
-import back from "../assets/back.png";
-import { Image } from "react-native";
-=======
 import CouncilCard from "../components/school/councilCard";
 import Council from "../pages/Council";
 import LikeCommunity from "../pages/LikeCommunity";
 import LikeCompetition from "../pages/LikeCompetition";
->>>>>>> 0376288bc699600fd5cd79ad5968fbdb95cfa04b
 
 const Stack = createNativeStackNavigator();
 
