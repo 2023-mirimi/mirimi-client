@@ -72,7 +72,7 @@ const Join = () => {
                     text="이용약관 및 개인정보취급방침에 동의합니다. (필수)"
                     innerIconStyle={{ borderWidth: 2, borderRadius: 4 }}
                     iconStyle={{borderRadius:4}}
-                    textStyle={{ fontFamily: "JosefinSans-Regular", textDecorationLine: 'none' }}
+                    textStyle={{ textDecorationLine: 'none' }}
                     onPress={() => {}}
                 />
                 <TouchableOpacity onPress={()=> navigation.replace("Root")}> 
