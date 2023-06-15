@@ -2,13 +2,14 @@ import React from "react";
 import { Text, View, StyleSheet,Image, TouchableOpacity, ScrollView, FlatList } from 'react-native';
 import Header from "../components/header";
 import { useNavigation } from "@react-navigation/native";
+import { StatusBar } from "expo-status-bar";
 
 const DATA = [
     {
         id: 1,
         category: '일상',
-        title: '다들 졸려죽을 땐 어떻게 함?',
-        user: '3311 하진',
+        title: 'ㅎㅇㅋㅋ 드라마 촬영소, 미림마이스터고의 실체 ㄷㄷ..;;',
+        user: '2500 박향규',
         date: '2023-06-13',
         views: '59',
         comments: '2345',
@@ -16,9 +17,9 @@ const DATA = [
     },
     {
         id: 2,
-        category: '일상',
-        title: '일이삼사오육칠팔구십빠 제발 날 집에 좀 보내줭',
-        user: '3311 하진',
+        category: '학교',
+        title: '혹시 4층에서 하복 넥타이 잃어버린 친구 있나요?',
+        user: '1122 김미림',
         date: '2023-06-13',
         views: '59',
         comments: '2345',
@@ -51,6 +52,7 @@ const Community = ({navigation, routes}) => {
     }
     return(
         <View style={styles.container}>
+            <StatusBar style="dark"/>
             <Header name={"커뮤니티"}/>
             <View style={styles.category}>
                 <TouchableOpacity >
