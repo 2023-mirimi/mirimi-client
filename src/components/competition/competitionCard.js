@@ -6,7 +6,7 @@ import { FlatList } from "react-native-gesture-handler";
 const DATA = [
   {
     organ: "기관명",
-    title: "공모전 명",
+    title: "스마틴 앱 챌린지",
     comment: "공모전에 대한 설명입니당",
     tag: ["HTML", "HTML"],
     day: "마감까지",
@@ -14,7 +14,7 @@ const DATA = [
   },
   {
     organ: "기관명",
-    title: "공모전 명",
+    title: "미니멘토",
     comment: "공모전에 대한 설명입니당",
     tag: ["HTML", "HTML"],
     day: "마감까지",
@@ -172,6 +172,7 @@ const styles = StyleSheet.create({
   wholecontainer: {
     flex: 1,
     marginLeft: 7,
+    backgroundColor: '#fff',
   },
   container: {
     width: 168,
@@ -183,6 +184,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: "rgba(221, 221, 221, 1)",
     borderRadius: 14,
+    backgroundColor: '#FAFAFA'
   },
   header: {
     width: "100%",
