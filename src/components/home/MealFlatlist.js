@@ -48,14 +48,18 @@ const MealFlatlist = () => {
       parseInt(item.MLSV_YMD.slice(6, 8))
     );
     const weekdays = ["일", "월", "화", "수", "목", "금", "토"];
-    const formattedDate = `${weekdays[mealDate.getDay()]} ${mealDate.getMonth() + 1}.${mealDate.getDate()}`;
+    const formattedDate = `${weekdays[mealDate.getDay()]} ${
+      mealDate.getMonth() + 1
+    }.${mealDate.getDate()}`;
 
     return (
       <View style={styles.element}>
         <View style={styles.row}>
           <View style={styles.date}>
             <Text style={styles.weekday}>{weekdays[mealDate.getDay()]}</Text>
-            <Text style={styles.day}>{mealDate.getMonth() + 1}.{mealDate.getDate()}</Text>
+            <Text style={styles.day}>
+              {mealDate.getMonth() + 1}.{mealDate.getDate()}
+            </Text>
           </View>
           <View>
             <Text style={styles.body}>{item.isToday}</Text>
@@ -82,7 +86,7 @@ const MealFlatlist = () => {
       </View>
       <FlatList
         horizontal={true}
-        data={parseMealsByType("조식")}
+        data={parseMealsByType("중식")}
         renderItem={renderMeal}
         keyExtractor={(item, index) => index.toString()}
       />
@@ -169,7 +173,7 @@ const styles = StyleSheet.create({
 
   date: {
     display: "flex",
-    flexDirection: "row"
+    flexDirection: "row",
   },
   weekday: {
     fontSize: 20,
