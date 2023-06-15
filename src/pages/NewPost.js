@@ -10,7 +10,6 @@ import RNPoll, {IChoice} from "react-native-poll";
 
 import imageIcon from "../assets/community/image.png";
 import location from "../assets/community/location.png";
-<<<<<<< HEAD
 import poll from "../assets/community/poll.png";
 import pin from "../assets/community/pin.png";
 import { StatusBar } from "expo-status-bar";
@@ -23,14 +22,6 @@ const NewPost = ({navigation}) => {
         imgs: '',
         date: null,
     })
-=======
-import poll from "../assets/community/poll.png"
-import pin from "../assets/community/pin.png"
-import { useNavigation } from "@react-navigation/native";
-
-const NewPost = () => {
-	const navigation = useNavigation()
->>>>>>> 0376288bc699600fd5cd79ad5968fbdb95cfa04b
     const [open, setOpen] = useState(false);
     const [category, setCategory] = useState('카테고리');
 
