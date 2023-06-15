@@ -2,9 +2,9 @@ import React, { useState, useEffect } from "react";
 import { View, TextInput, TouchableWithoutFeedback, Text } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
-const Item = ({ title, index }) => {
+const Item = (props) => {
   const [isEditing, setIsEditing] = useState(false);
-  const [text, setText] = useState(title);
+  const [text, setText] = useState("");
 
   const handleLongPress = () => {
     setIsEditing(true);
@@ -13,7 +13,8 @@ const Item = ({ title, index }) => {
   const handleSave = async () => {
     try {
       // AsyncStorage에 데이터 저장
-      await AsyncStorage.setItem(`schedule_${index}`, text);
+      await AsyncStorage.setItem(`schedule_${props.id}`, text);
+
       setIsEditing(false);
     } catch (error) {
       console.log("Error saving data:", error);
@@ -24,7 +25,7 @@ const Item = ({ title, index }) => {
     // AsyncStorage에서 데이터 불러오기
     const loadData = async () => {
       try {
-        const savedText = await AsyncStorage.getItem(`schedule_${index}`);
+        const savedText = await AsyncStorage.getItem(`schedule_${props.id}`);
         if (savedText !== null) {
           setText(savedText);
         }
