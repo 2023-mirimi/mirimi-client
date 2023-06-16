@@ -7,19 +7,25 @@ import data from '../../assets/school/academicCalendar';
 import CalendarArticle from './calendarArticle';
 
 const CalendarTab = () => {
-  const [titleIdx, setTitleIdx] = useState(0);
   const [selectedDate, setSelectedDate] = useState('');
+  const markedDates = {};
+
+  data.forEach((d) => {
+    markedDates[d.date] = { marked: true };
+    if(d.date === selectedDate) {
+      markedDates[d.date] = { selected: true};
+    }
+  })
 
   const handleDayClick = (day) => {
     setSelectedDate(day.dateString);
-    setTitleIdx(0);
   };
 
   const renderCalendarArticle = () => {
     const selectedData = data.find((d) => d.date === selectedDate);
     if (selectedData) {
       return selectedData.title.map((title, idx) => (
-        <CalendarArticle key={idx} date={selectedData.date} title={title} />
+        <CalendarArticle key={idx} date={selectedData.date} title={title} format={selectedData.format}/>
       ));
     }
     return null;
@@ -31,14 +37,13 @@ const CalendarTab = () => {
         style={styles.calendar}
         theme={{
           todayTextColor: 'black',
-          dotColor: 'red',
-          selectedDotColor: 'red',
-          textDayFontSize: 20,
-          textDayFontWeight: 'bold',
+          selectedDayBackgroundColor: 'rgba(23, 227, 129, 1)',
+          dotColor: 'rgba(23, 227, 129, 1)',
           textMonthFontSize: 20,
           textMonthFontWeight: 'bold',
           textSectionTitleColor: 'rgba(138, 138, 138, 1)',
         }}
+        markedDates={markedDates}
         onDayPress={handleDayClick}
         monthFormat={'M월'}
         hideExtraDays={true}
