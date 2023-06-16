@@ -5,7 +5,7 @@ const CalendarArticle = (props) => {
     <View style={styles.container}>
       <View style={styles.color}/>
       <View style={styles.text_container}>
-        <Text style={styles.date}>{props.date}</Text>
+        <Text style={styles.date}>{props.format}</Text>
         <Text style={styles.title}>{props.title}</Text>
       </View>
     </View>
