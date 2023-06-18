@@ -23,7 +23,7 @@ const MyPage = () => {
                 <Text style={styles.name}>이름</Text>
             </View>
           </View>
-          <TouchableOpacity>
+          <TouchableOpacity onPress={() => navigation.navigate('Setting')}>
             <Image source={settings}/>
           </TouchableOpacity>
         </View>

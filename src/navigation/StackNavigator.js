@@ -14,6 +14,7 @@ import CouncilCard from "../components/school/councilCard";
 import Council from "../pages/Council";
 import LikeCommunity from "../pages/LikeCommunity";
 import LikeCompetition from "../pages/LikeCompetition";
+import Setting from "../pages/Setting";
 
 const Stack = createNativeStackNavigator();
 
@@ -34,11 +35,12 @@ const MyStack = () => {
                 }}/>
             <Stack.Screen name="NewPost" component={NewPost} options={{headerShown: false}}/>
             <Stack.Screen name="MyPage" component={MyPage} options={{headerShown: false}}/>
-            <Stack.Screen name="BookBarCode" component={BookBarCode} options={{headerShown: false}}/>
+            <Stack.Screen name="Setting" component={Setting}/>
+            <Stack.Screen name="BookBarCode" component={BookBarCode}/>
             <Stack.Screen name="CouncilCard" component={CouncilCard} options={{headerShown: false}}/>
             <Stack.Screen name="Council" component={Council} options={{headerShown: false}}/>
-            <Stack.Screen name="LikeCommunity" component={LikeCommunity} options={{headerShown: false}}/>
-            <Stack.Screen name="LikeCompetition" component={LikeCompetition} options={{headerShown: false}}/>
+            <Stack.Screen name="LikeCommunity" component={LikeCommunity}/>
+            <Stack.Screen name="LikeCompetition" component={LikeCompetition}/>
         </Stack.Navigator>
     );
 }
