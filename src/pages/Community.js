@@ -1,44 +1,49 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Text, View, StyleSheet,Image, TouchableOpacity, ScrollView, FlatList } from 'react-native';
 import Header from "../components/header";
 import { useNavigation } from "@react-navigation/native";
 import { StatusBar } from "expo-status-bar";
+import axios from "axios";
 
-const DATA = [
-    {
-        id: 1,
-        category: '일상',
-        title: 'ㅎㅇㅋㅋ 드라마 촬영소, 미림마이스터고의 실체 ㄷㄷ..;;',
-        user: '2500 박향규',
-        date: '2023-06-13',
-        views: '59',
-        comments: '2345',
-        likes: '1234'
-    },
-    {
-        id: 2,
-        category: '학교',
-        title: '혹시 4층에서 하복 넥타이 잃어버린 친구 있나요?',
-        user: '1122 김미림',
-        date: '2023-06-13',
-        views: '59',
-        comments: '2345',
-        likes: '1234'
+const Community = ({navigation}) => {
+    let id = 0
+    const [data, setData] = useState([
+        {
+            post_id: 0,
+            category: '',
+            title: '',
+            user: '',
+            date: '',
+            views: '',
+            comments: '',
+            likes: ''
+        }
+    ]);
+    useEffect(() => {
+        getData();
+    },[]);
+    const getData = async () => {
+        await fetch('http://10.96.123.101:3300/community', {
+            method: 'GET',
+            headers: {
+                'Content-Type':'application/json'
+            }
+        }).then(res => res.json())
+        .then(json =>{
+            setData(json)})
     }
-]
-
-const Community = ({navigation, routes}) => {
-    // const {post} = useParams();
     const renderItem = ({item}) => {
         return(
-            <View>
-                <TouchableOpacity onPress={()=>navigation.navigate("DetailedCommunity", DATA)} style={styles.postBox} >
+            <View key={item.id}>
+                <TouchableOpacity onPress={()=>{
+                    navigation.navigate("DetailedCommunity",{id: item.post_id})
+                }} style={styles.postBox} >
                     <Text style={styles.postCategory}>{item.category}</Text>
                     <Text style={styles.postTitle}>{item.title}</Text>
                     <View style={styles.postInfo}>
-                        <Text style={styles.postInfoTxt}>{item.user}  |</Text>
-                        <Text style={styles.postInfoTxt}>{item.date}  |</Text>
-                        <Text style={styles.postInfoTxt}>{item.views}</Text>
+                        <Text style={styles.postInfoTxt}>{item.nickname}  |</Text>
+                        <Text style={styles.postInfoTxt}>{item.upload_date}  |</Text>
+                        <Text style={styles.postInfoTxt}>{item.post_views}</Text>
                     </View>
                     <View style={styles.postLikes}>
                         <Image source={require('../assets/community/comment.png')}></Image>
@@ -50,6 +55,9 @@ const Community = ({navigation, routes}) => {
             </View>
         );
     }
+    const initialTabs = [
+        {key: 'tab1', title: '전체'}
+    ]
     return(
         <View style={styles.container}>
             <StatusBar style="dark"/>
@@ -69,9 +77,10 @@ const Community = ({navigation, routes}) => {
                     <Text style={styles.categoryTxt}>공모전</Text>
                 </TouchableOpacity>
             </View>
+
             <View style={styles.box}>
                 <FlatList 
-                    data={DATA}
+                    data={data}
                     keyExtractor={item => item.id}
                     renderItem={renderItem}/>
             </View>

@@ -5,14 +5,14 @@ import { useState, useMemo } from "react";
 import DropDownPicker from 'react-native-dropdown-picker';
 import * as ImagePicker from 'expo-image-picker';
 import RadioGroup from 'react-native-radio-buttons-group';
-import { GestureHandlerRootView } from "react-native-gesture-handler";
 import RNPoll, {IChoice} from "react-native-poll";
-
+import CheckUploadModal from "../components/community/CheckUploadModal";
 import imageIcon from "../assets/community/image.png";
 import location from "../assets/community/location.png";
 import poll from "../assets/community/poll.png";
 import pin from "../assets/community/pin.png";
 import { StatusBar } from "expo-status-bar";
+import axios from "axios";
 
 const NewPost = ({navigation}) => {
     const [post, setPost] = useState({
@@ -20,13 +20,13 @@ const NewPost = ({navigation}) => {
         category: '',
         content: '',
         imgs: '',
-        date: null,
+        // date: null,
     })
     const [open, setOpen] = useState(false);
     const [category, setCategory] = useState('카테고리');
-
     const [inputHeight, setInputHeight] = useState(0);
     const [modalVisible, setModalVisible] = useState(false);
+    const [uploadModalVisible, setuploadModalVisible] = useState(false);
     const radioButtons = useMemo(() => ([
         {
             id: '일상', // acts as primary key, should be unique and non-empty string
@@ -132,10 +132,23 @@ const NewPost = ({navigation}) => {
             console.log(result.assets[0]);
         }
     }
-    const setDate = async () => {
-        var uploadDate = new Date(); 
+
+    const saveBtn = async () => {
+        // await handleInputChange('date', new Date().toLocaleString());
+        if(post.title == '' || post.content == ''){
+            return Alert.alert('다시 입력하세요.')
+        } else {
+            await axios.post('http://10.96.123.101:3300/community', post,  {
+            headers: {'Content-Type': 'application/json'}
+                }).then(res => {
+                    console.log('새로운 글 추가 요청!', res);
+                    // 커뮤니티 페이지로 이동하는 네비게이션 추가하기 
+                }).catch(err => {
+                    console.log(err);
+                })
+            return "Success"
+        }    
         
-        return await uploadDate.toLocaleString();
     }
 
     return(
@@ -148,12 +161,16 @@ const NewPost = ({navigation}) => {
                     </TouchableOpacity>
                     <Text style={styles.headerTxt}>게시글 작성</Text>
                     <TouchableOpacity 
-                    onPress={async () => {
-                        // navigation.navigate('Community', {post: post});
-                        //TODO)) 날짜를 만드는 함수 넣기
-                        await handleInputChange('date', setDate());
-                        console.log(post);
-                    }}>
+                        onPress={() =>{
+                            // const uploadResult = saveBtn(); 
+                            // if(uploadResult == "Success"){
+                            //     console.log('게시글 추가 성공!');
+                            //     navigation.navigate("Community")
+                            // } else if(saveBtn() == "Fail") {
+                            //     Alert.alert('업로드 실패', '제목 또는 내용을 입력해주세요')
+                            // }
+                            // setuploadModalVisible(true)
+                            }}>
                         <Text style={styles.uploadBtn}>업로드</Text>
                     </TouchableOpacity>
                 </View>
@@ -164,85 +181,6 @@ const NewPost = ({navigation}) => {
                         value={post.title}
                         onChangeText={(value) => handleInputChange('title', value)}
                     />
-                    <Modal animationType="slide"
-                    transparent={true}
-                    onRequestClose={()=>setModalVisible(!modalVisible)}
-                    visible={modalVisible}
-                    >
-                        <View style={styles.centeredView}>
-                            <View style={styles.modalView}>
-                                <View style={styles.modalHeaderView}>
-                                    <Text style={styles.modalTitle}>카테고리 선택</Text>
-                                    <Button title="완료" style={styles.modalCloseBtn} onPress={()=>{
-                                        setModalVisible(!modalVisible)
-                                        handleInputChange('category', category);}}>
-                                    </Button>
-                                </View>
-                                <View style={styles.radioView}>
-                                    <View style={styles.radioLabel}>
-                                        <TouchableOpacity>
-                                            <Text style={styles.radioTxt}>일상</Text>
-                                        </TouchableOpacity>
-                                        <TouchableOpacity>
-                                            <Text style={styles.radioTxt}>취업</Text>
-                                        </TouchableOpacity>
-                                        <TouchableOpacity>
-                                            <Text style={styles.radioTxt}>학교</Text>
-                                        </TouchableOpacity>
-                                        <TouchableOpacity>
-                                            <Text style={styles.radioTxt}>공모전</Text>
-                                        </TouchableOpacity>
-                                    </View>
-                                    <RadioGroup 
-                                        radioButtons={radioButtons}
-                                        onPress={setCategory}
-                                        selectedId={category}
-                                        containerStyle={{
-                                            flexDirection: 'column', 
-                                            // backgroundColor: '#F2F2F2',
-                                            gap: 24,
-                                        }}
-                                    />
-                                </View>
-                            </View>
-                        </View>
-                    </Modal>
-                    {/* <DropDownPicker
-                        name="category" 
-                        open={open}
-                        onPress={()=> setModalVisible(true)}
-                        value={category}
-                        items={items}
-                        setOpen={setOpen}
-                        setValue={setCategory}
-                        setItems={setItems}
-                        disableBorderRadius={true}
-                        onChangeValue={(value) => handleInputChange('category',value)}
-                        onClose={() => console.log(category)} //선택한 카테고리
-                        translation={{
-                            PLACEHOLDER: "카테고리"
-                        }}
-                        dropDownContainerStyle={{
-                            borderBottomColor: '#F3F3F3',
-                            borderRadius: 10,
-                            borderColor: 0,
-                            backgroundColor: '#FAFAFA',
-                        }}
-                        style={{
-                            borderBottomColor: '#F3F3F3',
-                            borderColor: 0,
-                            borderRadius: 0,
-                        }}
-                        labelStyle={{
-                            color: '#414141',
-                            padding: 4,
-
-                        }}
-                        textStyle={{
-                            color: '#414141',
-                            padding: 4,
-                        }}
-                    /> */}
                     <TouchableOpacity style={styles.title} onPress={()=>setModalVisible(!modalVisible)}>
                         <Text>{category}</Text>
                         <Image source={require('../assets/community/chevron-down.png')}/>
@@ -285,6 +223,7 @@ const NewPost = ({navigation}) => {
                         </TouchableOpacity>
                     </View>
                 </View>
+                <CheckUploadModal />
             </View>
         </Pressable>
     );

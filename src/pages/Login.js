@@ -27,7 +27,7 @@ export default Login = ({navigation}) => {
                 if(res.data){
                     console.log('res.status: ', res.status);
                     console.log(res.data);
-                    Alert.alert('Welcome',`환영합니다. ${res.data.name}님`)
+                    // Alert.alert('Welcome',`환영합니다. ${res.data.name}님`)
                     navigation.navigate("Root");
                 } else if(res.data === false) {
                     Alert.alert('Login Fail','올바른 아이디 또는 비밀번호 입력하시오.');
