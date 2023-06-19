@@ -1,61 +1,121 @@
-import React, { useState } from "react";
-import { StyleSheet, View,Text, Image, TouchableOpacity, TextInput, KeyboardAvoidingView,Pressable,Keyboard,Platform } from "react-native";
+import React, { useEffect, useState } from "react";
+import { StyleSheet, View,Text, Image, TouchableOpacity, TextInput, 
+    KeyboardAvoidingView,Pressable,Keyboard,Platform, FlatList, ScrollView } from "react-native";
 import like from "../assets/community/thumb.png";
 import share from "../assets/community/share-ios.png";
 import horn from "../assets/community/horn.png";
 import profile from "../assets/mypage/profile.png";
 import Return from "../assets/community/return.png";
 import More from "../assets/community/more.png";
+import axios from "axios";
 
-const DetailedCommunity = ({navigation}) => {
+const DetailedCommunity = ({navigation, route}) => {
+    const postID = route.params.id;
     const [replyValue, setReplyValue] = useState('');
+    const [reply, setReply] = useState([
+        {
+            // id: 0,
+            post_id: '',
+            nickname: '',
+            reply_content: '',
+            reply_date: '',
+        }
+    ]);
+    const [post, setPost] = useState([]);
+    const [imageIdx, setImageIdx] = useState(0);
+    const images = [
+        require('../assets/community/thumb.png'),
+        require('../assets/community/thumb-up.png')
+    ];
+
+    useEffect(()=> {
+        axios.get(`http://10.96.123.101:3300/community/${postID}`, {
+        headers: {'Content-Type': 'application/json'}
+        }).then(res =>{ 
+            // const data = res.json();
+            setPost(res.data.post[0]) //게시글 내용
+            setReply(res.data.reply)
+            // console.log('게시글 내용 : ',res.data.post[0])
+            // console.log('댓글 내용 --> ',res.data.reply[0])
+            // setReply(data.reply) //게시글 댓글
+        })
+        .catch(err => console.log('/community/:postID 에러', err))
+    }, [reply])
+    //댓글 추가 버튼 이벤트
+    const addReply = () => {
+        console.log(replyValue);
+        
+        axios.post(`http://10.96.123.101:3300/community/${postID}`, {replyValue: replyValue}, {
+
+        }).then(res => console.log('새로운 댓글 추가 완료!'))
+        .catch(err => console.log('에러 발생!'))
+    }
+    const handleButtonPress = () => {
+        setImageIdx((preIndex) => (preIndex === 0 ? 1 : 0));
+    }
+    const renderItem = ({item}) => {
+        return(
+            <ScrollView>
+                <View style={styles.replyBox}>
+                    <View style={styles.replyUser}>
+                        <Image source={profile} style={{width: 36, height: 36}}/>
+                        <Text>{item.nickname}</Text>
+                    </View>
+                    <Text>{item.reply_content}</Text>
+                </View>
+            </ScrollView>
+        )
+    }
     return(
         <Pressable style={{flex: 1}} onPress={() => Keyboard.dismiss()}>
         <View style={{flex: 1}}>
             <View style={styles.header}>
                 <View style={styles.container}>
                     <View style={{flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between'}}>
-                        <Text style={styles.category}>일상</Text>
+                        <Text style={styles.category}>{post.category}</Text>
                         <TouchableOpacity>
                             <Image source={More}/>
                         </TouchableOpacity>
                     </View>
-                    <Text style={styles.title}>글 제목</Text>
+                    <Text style={styles.title}>{post.title}</Text>
                     <View style={styles.infoBox}>
-                        <Text style={styles.infoText}>작성자</Text>
+                        <Text style={styles.infoText}>{post.nickname}</Text>
                         <Text style={styles.infoText}>|</Text>
-                        <Text style={styles.infoText}>작성일</Text>
+                        <Text style={styles.infoText}>{post.upload_date}</Text>
                         <Text style={styles.infoText}>|</Text>
-                        <Text style={styles.infoText}>조회수</Text>
+                        <Text style={styles.infoText}>{post.post_views}</Text>
                     </View>
                     <View style={styles.content}>
-                    <Text>안녕하세요. 이곳은 글 내용을 나타내는 곳입니다. 멋있는 글이 있습니다.</Text>
+                    <Text>{post.content}</Text>
                     </View>
                     <View style={styles.iconBox}>
-                        <TouchableOpacity>
-                            <Image source={like}/>
+                        <TouchableOpacity onPress={handleButtonPress}>
+                            <Image style={styles.icon} source={images[imageIdx]}/>
                         </TouchableOpacity>
-                        <Text>0</Text>
+                        <Text>{post.likes}</Text>
                         <TouchableOpacity>
-                            <Image source={share}/>
+                            <Image style={styles.icon} source={share}/>
                         </TouchableOpacity>
                         <TouchableOpacity>
-                            <Image source={horn}/>
+                            <Image style={styles.icon} source={horn}/>
                         </TouchableOpacity>
                     </View>
                 </View>
-                <View style={styles.replyBox}>
-                    <View style={styles.replyUser}>
-                        <Image source={profile} style={{width: 36, height: 36}}/>
-                        <Text>닉네임</Text>
+                    <View>
+                    <FlatList 
+                        data={reply}
+                        renderItem={renderItem}/>
                     </View>
-                    <Text>안녕하세요. 이것은 댓글입니다.</Text>
-                </View>
+                
             </View>
             <KeyboardAvoidingView behavior={Platform.OS == 'ios' ? 'padding' : null}>
             <View style={styles.footer}>
-                <TextInput style={styles.replyInput} placeholder="댓글을 작성해주세요."/>
-                <TouchableOpacity style={styles.replyBtn}>
+                <TextInput 
+                    value={replyValue}
+                    onChangeText={(value) => setReplyValue(value)}
+                    style={styles.replyInput} 
+                    placeholder="댓글을 작성해주세요."/>
+                <TouchableOpacity style={styles.replyBtn} onPress={addReply}>
                     <Image source={Return}/>
                 </TouchableOpacity>
             </View>
@@ -102,6 +162,10 @@ const styles = StyleSheet.create({
         gap: 10,
         marginTop: 48,
     }, 
+    icon: {
+        width: 32,
+        height: 32
+    },
     footer: {
         padding: 100,
         paddingTop: 10,
