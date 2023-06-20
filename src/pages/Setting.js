@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { StyleSheet, View, Image, TouchableOpacity, Text } from 'react-native';
 import { TextInput } from 'react-native-gesture-handler';
 import profile from '../assets/mypage/profile.png';
@@ -6,6 +6,42 @@ import { Entypo, AntDesign } from '@expo/vector-icons';
 
 const Setting = ({ navigation }) => {
   const [isEditable, setIsEditable] = useState(false);
+  const [userName, setUserName] = useState('');
+  const [grade, setGrade] = useState(0);
+  const [nickname, setNickname] = useState('');
+  const [email, setEmail] = useState('');
+  const [pw, setPw] = useState('');
+
+  useEffect(() => {
+    fetchUserData();
+  }, []);
+
+  const fetchUserData = async () => {
+    try {
+      const response = await fetch('http://10.96.124.161:3300/account/user', {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      });
+  
+      const data = await response.json();
+      console.log("Data: ", data);
+  
+      if (response.ok) {
+        console.log(data);
+        setUserName(data.name);
+        setGrade(data.grade);
+        setNickname(data.nickname);
+        setEmail(data.email);
+        setPw(data.password);
+      } else {
+        console.log('Failed to fetch user data');
+      }
+    } catch (error) {
+      console.log('Error:', error);
+    }
+  };
 
   React.useLayoutEffect(() => {
     navigation.setOptions({
@@ -31,26 +67,26 @@ const Setting = ({ navigation }) => {
         </View>
       </View>
       <View style={styles.name_container}>
-        <Text style={styles.name}>김미림</Text>
+        <Text style={styles.name}>{userName}</Text>
         <TouchableOpacity>
           <Entypo name="edit" size={14.5} color="black" />
         </TouchableOpacity>
       </View>
       <View style={styles.input_container}>
         <Text style={styles.label}>닉네임</Text>
-        <TextInput style={styles.input} editable={isEditable}>김꺽정</TextInput>
+        <TextInput style={styles.input} editable={isEditable}>{nickname}</TextInput>
       </View>
       <View style={styles.input_container}>
         <Text style={styles.label}>학교 메일</Text>
-        <TextInput style={styles.input} editable={isEditable}>d2103@e-mirim.hs.kr</TextInput>
+        <TextInput style={styles.input} editable={isEditable}>{email}</TextInput>
       </View>
       <View style={styles.input_container}>
         <Text style={styles.label}>학생정보</Text>
-        <TextInput style={styles.input} eeditable={isEditable}>3학년 5반 5번</TextInput>
+        <TextInput style={styles.input} eeditable={isEditable}>{grade}</TextInput>
       </View>
       <View style={styles.input_container}>
         <Text style={styles.label}>비밀번호</Text>
-        <TextInput style={styles.input} editable={isEditable}>1269JO11</TextInput>
+        <TextInput style={styles.input} editable={isEditable}>{pw}</TextInput>
       </View>
     </View>
   );
