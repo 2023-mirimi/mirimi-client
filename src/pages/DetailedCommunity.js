@@ -92,7 +92,7 @@ const DetailedCommunity = ({navigation, route}) => {
                         <TouchableOpacity onPress={handleButtonPress}>
                             <Image style={styles.icon} source={images[imageIdx]}/>
                         </TouchableOpacity>
-                        <Text>{post.likes}</Text>
+                        {/* <Text>{post.likes}</Text> */}
                         <TouchableOpacity>
                             <Image style={styles.icon} source={share}/>
                         </TouchableOpacity>

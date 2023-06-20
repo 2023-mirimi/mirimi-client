@@ -16,7 +16,7 @@ const CheckUploadModal = ({visible, onClose, keepOpen}) => {
         visible={visible}
         backdropOpacity={0.5}
         transparent={true}
-        animationType="slide"
+        animationType="fade"
       >
         <View style={styles.modal}>
           <View style={styles.modalView}>
