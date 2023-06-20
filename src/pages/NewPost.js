@@ -2,7 +2,6 @@ import React, { useEffect } from "react";
 import { StyleSheet,View, Text,TouchableOpacity, 
     Image, TextInput, Pressable, Keyboard, Alert, Button, Modal,RadioButton } from "react-native";
 import { useState, useMemo } from "react";
-import DropDownPicker from 'react-native-dropdown-picker';
 import * as ImagePicker from 'expo-image-picker';
 import RadioGroup from 'react-native-radio-buttons-group';
 import RNPoll, {IChoice} from "react-native-poll";
