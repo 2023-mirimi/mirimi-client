@@ -1,3 +1,4 @@
+import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
 import profile from '../assets/mypage/profile.png';
 import settings from '../assets/mypage/settings.png';
@@ -9,7 +10,37 @@ import Header from '../components/header';
 import { useNavigation } from '@react-navigation/native';
 
 const MyPage = () => {
-	const navigation = useNavigation()
+  const navigation = useNavigation();
+  const [userName, setUserName] = useState('');
+  const [grade, setGrade] = useState('')
+
+  useEffect(() => {
+    fetchUserData();
+  }, []);
+
+  const fetchUserData = async () => {
+    try {
+      const response = await fetch('http://10.96.124.161:3300/account/user', {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      });
+  
+      const data = await response.json();
+      console.log("Data: ", data);
+  
+      if (response.ok) {
+        console.log(data);
+        setUserName(data.name);
+        setGrade(data.grade);
+      } else {
+        console.log('Failed to fetch user data');
+      }
+    } catch (error) {
+      console.log('Error:', error);
+    }
+  };
 
   return (
     <View style={styles.container}>
@@ -19,8 +50,8 @@ const MyPage = () => {
         <View style={styles.textBox}>
             <Image source={profile}/>
             <View style={styles.infoBox}>
-                <Text style={styles.grade}>학년 반 번호</Text>
-                <Text style={styles.name}>이름</Text>
+                <Text style={styles.grade}>{grade}</Text>
+                <Text style={styles.name}>{userName}</Text>
             </View>
           </View>
           <TouchableOpacity onPress={() => navigation.navigate('Setting')}>
