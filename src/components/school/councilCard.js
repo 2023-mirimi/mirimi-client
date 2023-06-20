@@ -17,13 +17,11 @@ const CouncilCard = (props) => {
       </View>
       <View style={styles.content}>
         <Text style={styles.text}>{props.content}</Text>
-        <Text>{props.src[0]}</Text>
-        <Text>{props.src[1]}</Text>
         <View style={styles.imageContainer}>
           {props.src.map((image, index) => (
             <Image
               key={index}
-              source={{ uri: image }}
+              source={image}
               style={styles.imageBox}
             />
           ))}

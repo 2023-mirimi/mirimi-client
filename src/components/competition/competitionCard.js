@@ -54,9 +54,7 @@ const DATA = [
   },
 ];
 
-const Item = ({ organ, title, comment, tag, day, count }) => (
- 
-);
+const Item = ({ organ, title, comment, tag, day, count }) => {}
 
 const CompetitionCard = () => {
   return (
