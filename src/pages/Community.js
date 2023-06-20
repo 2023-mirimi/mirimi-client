@@ -58,6 +58,7 @@ const Community = ({navigation}) => {
     const initialTabs = [
         {key: 'tab1', title: '전체'}
     ]
+
     return(
         <View style={styles.container}>
             <StatusBar style="dark"/>
