@@ -1,85 +1,79 @@
 import React from "react";
-import { Text, View, StyleSheet,Image, TouchableOpacity, ScrollView, FlatList } from 'react-native';
-import Header from "../components/header";
-import { useNavigation } from "@react-navigation/native";
-import { StatusBar } from "expo-status-bar";
+import { createStackNavigator } from "@react-navigation/stack";
 
-const DATA = [
-    {
-        id: 1,
-        category: '일상',
-        title: 'ㅎㅇㅋㅋ 드라마 촬영소, 미림마이스터고의 실체 ㄷㄷ..;;',
-        user: '2500 박향규',
-        date: '2023-06-13',
-        views: '59',
-        comments: '2345',
-        likes: '1234'
-    },
-    {
-        id: 2,
-        category: '학교',
-        title: '혹시 4층에서 하복 넥타이 잃어버린 친구 있나요?',
-        user: '1122 김미림',
-        date: '2023-06-13',
-        views: '59',
-        comments: '2345',
-        likes: '1234'
-    }
-]
+const Stack = createStackNavigator();
 
-const Community = ({navigation, routes}) => {
-    // const {post} = useParams();
-    const renderItem = ({item}) => {
-        return(
-            <View>
-                <TouchableOpacity onPress={()=>navigation.navigate("DetailedCommunity", DATA)} style={styles.postBox} >
-                    <Text style={styles.postCategory}>{item.category}</Text>
-                    <Text style={styles.postTitle}>{item.title}</Text>
-                    <View style={styles.postInfo}>
-                        <Text style={styles.postInfoTxt}>{item.user}  |</Text>
-                        <Text style={styles.postInfoTxt}>{item.date}  |</Text>
-                        <Text style={styles.postInfoTxt}>{item.views}</Text>
-                    </View>
-                    <View style={styles.postLikes}>
-                        <Image source={require('../assets/community/comment.png')}></Image>
-                        <Text style={styles.postLikesTxt}>{item.comments}</Text>
-                        <Image source={require('../assets/community/thumb.png')}></Image>
-                        <Text style={styles.postLikesTxt}>{item.likes}</Text>
-                    </View>
-                </TouchableOpacity>
-            </View>
-        );
-    }
-    return(
-        <View style={styles.container}>
-            <StatusBar style="dark"/>
-            <Header name={"커뮤니티"}/>
-            <View style={styles.category}>
-                <TouchableOpacity >
-                    <Text style={styles.categoryTxt}>전체</Text>
-                </TouchableOpacity>
-                <TouchableOpacity >
-                    <Text style={styles.categoryTxt}>일상</Text>
-                </TouchableOpacity><TouchableOpacity >
-                    <Text style={styles.categoryTxt}>취업</Text>
-                </TouchableOpacity><TouchableOpacity >
-                    <Text style={styles.categoryTxt}>학교</Text>
-                </TouchableOpacity>
-                <TouchableOpacity >
-                    <Text style={styles.categoryTxt}>공모전</Text>
-                </TouchableOpacity>
-            </View>
-            <View style={styles.box}>
-                <FlatList 
-                    data={DATA}
-                    keyExtractor={item => item.id}
-                    renderItem={renderItem}/>
-            </View>
-            <TouchableOpacity style={styles.addPost} onPress={()=> navigation.navigate('NewPost')}>
-                    <Image source={require('../assets/community/floating_btn.png')}></Image>
-            </TouchableOpacity>
-        </View>
-    );
+import { useWindowDimensions, Text, StyleSheet, View } from 'react-native';
+import { TabView, SceneMap, TabBar } from 'react-native-tab-view';
+import AllTab from "../components/competition/AllTab";
+import DailyTab from "../components/community/DailyTab";
+import EmploymentTab from "../components/community/EmploymentTab";
+import SchoolTab from "../components/community/SchoolTab";
+import ContestTab from "../components/community/ContestTab";
+import Header from '../components/header';
+
+const FirstRoute = () => (
+  <AllTab/>
+);
+
+const SecondRoute = () => (
+  <DailyTab />
+);
+
+const ThirdRoute = () => (
+  <EmploymentTab />
+);
+
+const FourthRoute = () => (
+    <SchoolTab />
+);
+const FifthRoute = () => (
+    <ContestTab />
+);
+const renderScene = SceneMap({
+  first: FirstRoute,
+  second: SecondRoute,
+	third: ThirdRoute
+});
+
+const Community = () => {
+  const layout = useWindowDimensions();
+
+  const [index, setIndex] = React.useState(0);
+  const [routes] = React.useState([
+    { key: 'first', title: '전체' },
+    { key: 'second', title: '일상' },
+		{ key: 'third', title: '지도'}
+  ]);
+
+	const renderTabBar = (props) => (
+		<TabBar
+			{...props}
+			indicatorStyle={{ backgroundColor: 'rgba(23, 227, 129, 1)' }}
+			style={{ backgroundColor: 'rgba(255, 255, 255, 1)'}}
+			renderLabel={({ route, focused }) => (
+				<Text style={focused ? {color:'black'} : {color:'rgba(138, 138, 138, 1)'}}>
+					{route.title}
+				</Text>
+			)}
+		/>
+	);
+
+  return (
+    <>
+    <View style={{backgroundColor: '#fff'}}>
+      <Header name={"학교생활"}/>
+    </View>
+      <TabView
+        navigationState={{ index, routes }}
+        renderScene={renderScene}
+        onIndexChange={setIndex}
+        initialLayout={{ width: layout.width }}
+			//   renderTabBar={renderTabBar}
+        />
+    </>
+    
+  );
 }
 
 const styles = StyleSheet.create({
@@ -115,59 +109,7 @@ const styles = StyleSheet.create({
     categoryTxt: {
         fontSize: 18,
     },
-    box: {
-        flexDirection: 'row',
-        justifyContent: 'center',
-        marginTop: 44,
-        marginLeft: 16,
-        marginRight: 16,
-    },
-    postBox: {
-        width: 343,
-        padding: 16,
-        height: 142,
-        borderColor: '#E8E8E8',
-        borderWidth: 1,
-        borderRadius: 10,
-        marginBottom: 16,
-    },
-    postCategory: {
-        fontSize: 14,
-        color: '#17E381',
-        fontWeight: 'bold'
-    },
-    postTitle: {
-        fontSize: 16,
-        fontWeight: 700,
-        marginTop: 4,
-        marginBottom: 8
-    },
-    postInfo: {
-        flexDirection: 'row',
-        gap: 8,
-        color: '#E9E9E9'
-    },
-    postInfoTxt: {
-        color: '#5A5A5A'
-    },
-    postLikes: {
-        flexDirection: 'row',
-        marginTop: 28,
-        justifyContent: 'flex-end',
-        gap: 6,
-        alignItems: 'center'
-    },
-    postLikesTxt: {
-        color: '#5A5A5A',
-    },
-    addPost: {
-        bottom: 0,
-        right: 0,
-        position: 'absolute',
-        marginRight: 16,
-        marginBottom: 92,
-        display: 'flex'
-    }
+    
 });
 
 export default Community;

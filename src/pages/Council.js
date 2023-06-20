@@ -7,24 +7,25 @@ import link from '../assets/school/link.png';
 import instagram from '../assets/school/instagram.png';
 import { TabView, SceneMap, TabBar } from 'react-native-tab-view';
 import CouncilTab from '../components/school/councilTab';
+import CheckTab from '../components/school/checkTab';
 const FirstRoute = () => (
     <CouncilTab/>
 );
 
 const SecondRoute = () => (
-    <CouncilTab/>
+    <CheckTab/>
 );
 
 const ThirdRoute = () => (
-    <CouncilTab/>
+    <CheckTab/>
 );
 
 const FourthRoute = () => (
-    <CouncilTab/>
+    <CheckTab/>
 );
 
 const FifthRoute = () => (
-    <CouncilTab/>
+    <CheckTab/>
 );
 
 const renderScene = SceneMap({
