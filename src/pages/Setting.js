@@ -3,6 +3,7 @@ import { StyleSheet, View, Image, TouchableOpacity, Text } from 'react-native';
 import { TextInput } from 'react-native-gesture-handler';
 import profile from '../assets/mypage/profile.png';
 import { Entypo, AntDesign } from '@expo/vector-icons';
+import * as ImagePicker from 'expo-image-picker'; // Import ImagePicker
 
 const Setting = ({ navigation }) => {
   const [isEditable, setIsEditable] = useState(false);
@@ -11,6 +12,7 @@ const Setting = ({ navigation }) => {
   const [nickname, setNickname] = useState('');
   const [email, setEmail] = useState('');
   const [pw, setPw] = useState('');
+  const [selectedImage, setSelectedImage] = useState(null); // Track the selected image
 
   useEffect(() => {
     fetchUserData();
@@ -43,6 +45,29 @@ const Setting = ({ navigation }) => {
     }
   };
 
+  const handleSelectImage = async () => {
+    try {
+      const permissionResult = await ImagePicker.requestMediaLibraryPermissionsAsync();
+      if (!permissionResult.granted) {
+        alert('Permission to access the camera roll is required!');
+        return;
+      }
+      
+      const result = await ImagePicker.launchImageLibraryAsync({
+        mediaTypes: ImagePicker.MediaTypeOptions.Images,
+        allowsEditing: true,
+        aspect: [1, 1],
+        quality: 1,
+      });
+      
+      if (!result.cancelled) {
+        setSelectedImage(result.uri);
+      }
+    } catch (error) {
+      console.log('Error selecting image:', error);
+    }
+  };
+
   React.useLayoutEffect(() => {
     navigation.setOptions({
       headerRight: () => (
@@ -59,18 +84,26 @@ const Setting = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <View style={styles.profile}>
-        <Image source={profile}/>
+        {selectedImage ? (
+          <Image source={{ uri: selectedImage }} style={styles.profileImage} />
+        ) : (
+          <Image source={profile} style={styles.profileImage} />
+        )}
         <View style={styles.plus_container}>
-          <TouchableOpacity style={styles.plus}>
-            <AntDesign name="plus" size={10} color="black" />
+        {isEditable && (
+          <TouchableOpacity style={styles.plus} onPress={handleSelectImage}>
+            <AntDesign name="plus" size={18} color="black" />
           </TouchableOpacity>
-        </View>
+        )}
+        </View> 
       </View>
       <View style={styles.name_container}>
         <Text style={styles.name}>{userName}</Text>
-        <TouchableOpacity>
-          <Entypo name="edit" size={14.5} color="black" />
-        </TouchableOpacity>
+        {isEditable && (
+          <TouchableOpacity>
+            <Entypo name="edit" size={14.5} color="black" />
+          </TouchableOpacity>
+        )}
       </View>
       <View style={styles.input_container}>
         <Text style={styles.label}>닉네임</Text>
@@ -78,15 +111,15 @@ const Setting = ({ navigation }) => {
       </View>
       <View style={styles.input_container}>
         <Text style={styles.label}>학교 메일</Text>
-        <TextInput style={styles.input} editable={isEditable}>{email}</TextInput>
+        <TextInput style={styles.input}>{email}</TextInput>
       </View>
       <View style={styles.input_container}>
         <Text style={styles.label}>학생정보</Text>
-        <TextInput style={styles.input} eeditable={isEditable}>{grade}</TextInput>
+        <TextInput style={styles.input}>{grade}</TextInput>
       </View>
       <View style={styles.input_container}>
         <Text style={styles.label}>비밀번호</Text>
-        <TextInput style={styles.input} editable={isEditable}>{pw}</TextInput>
+        <TextInput style={styles.input}>{pw}</TextInput>
       </View>
     </View>
   );
@@ -110,9 +143,9 @@ const styles = StyleSheet.create({
   plus: {
     position: 'absolute',
     right: -1,
-    bottom: -30,
-    width: 18,
-    height: 18,
+    bottom: -50,
+    width: 25,
+    height: 25,
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
@@ -143,6 +176,11 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     backgroundColor: 'rgba(250, 250, 250, 1)',
     color: 'rgba(138, 138, 138, 1)'
+  },
+  profileImage: {
+    width: 100,
+    height: 100,
+    borderRadius: 50,
   }
 });
 
