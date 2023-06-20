@@ -20,13 +20,13 @@ export default Login = ({navigation}) => {
         pw: ''
     });
     const onPressLoginBtn = (data) => {
-        axios.post('http://10.96.124.161:3300/account/login', data, {
+        axios.post('http://10.96.124.51:3300/account/login', data, {
             headers: {
                 'Content-Type': 'application/json',
             }}).then(res => {
                 if(res.data){
-                    // console.log('res.status: ', res.status);
-                    // console.log(res.data);
+                    console.log('res.status: ', res.status);
+                    console.log(res.data);
                     // Alert.alert('Welcome',`환영합니다. ${res.data.name}님`)
                     navigation.navigate("Root");
                 } else if(res.data === false) {
