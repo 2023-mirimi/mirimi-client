@@ -23,7 +23,7 @@ const Community = ({navigation}) => {
         getData();
     },[]);
     const getData = async () => {
-        await fetch('http://10.96.124.51:3300/community', {
+        await fetch('http://10.96.123.101:3300/community', {
             method: 'GET',
             headers: {
                 'Content-Type':'application/json'
