@@ -1,149 +1,61 @@
-import { StyleSheet, Text, View, TouchableOpacity, Image } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  TouchableOpacity,
+  Image,
+  useState,
+} from "react-native";
 import filledHeart from "../../assets/competition/filledHeart.png";
+import emptyHeart from "../../assets/competition/emptyHeart.png";
 import profile from "../../assets/school/council.png";
 import { FlatList } from "react-native-gesture-handler";
 
 const DATA = [
   {
-    organ: "기관명",
+    organ: "중소벤처기업부",
     title: "스마틴 앱 챌린지",
-    comment: "공모전에 대한 설명입니당",
-    tag: ["HTML", "HTML"],
-    day: "마감까지",
-    count: "D-3",
+    comment: "STAC 아이디어/개발 공모전",
+    tag: ["참가율 1위", "아이디어/개발분야"],
+    day: "",
+    count: "진행중",
   },
   {
-    organ: "기관명",
+    organ: "미림마이스터고",
     title: "미니멘토",
-    comment: "공모전에 대한 설명입니당",
-    tag: ["HTML", "HTML"],
-    day: "마감까지",
-    count: "D-3",
+    comment: "졸업생 선배님들과 프로젝트하는 프로젝트",
+    tag: ["NEW", "현재 1기 진행중"],
+    day: "",
+    count: "진행중",
   },
   {
-    organ: "기관명",
-    title: "공모전 명",
-    comment: "공모전에 대한 설명입니당",
-    tag: ["HTML", "HTML"],
-    day: "마감까지",
-    count: "D-3",
+    organ: "미림마이스터고",
+    title: "창아경",
+    comment: "창의아이디어경진대회",
+    tag: ["교내 공모전", "높은 경쟁률"],
+    day: "",
+    count: "진행중",
   },
   {
-    organ: "기관명",
-    title: "공모전 명",
-    comment: "공모전에 대한 설명입니당",
-    tag: ["HTML", "HTML"],
-    day: "마감까지",
-    count: "D-3",
+    organ: "SK플래닛",
+    title: "앱잼 해커톤",
+    comment: "무박 2일로 이뤄지는 해커톤",
+    tag: ["생활/엔터/IOT", "무박 2일"],
+    day: "",
+    count: "",
   },
   {
-    organ: "기관명",
-    title: "공모전 명",
-    comment: "공모전에 대한 설명입니당",
-    tag: ["HTML", "HTML"],
-    day: "마감까지",
-    count: "D-3",
-  },
-  {
-    organ: "기관명",
-    title: "공모전 명",
-    comment: "공모전에 대한 설명입니당",
-    tag: ["HTML", "HTML"],
-    day: "마감까지",
-    count: "D-3",
-  },
-  {
-    organ: "기관명",
-    title: "공모전 명",
-    comment: "공모전에 대한 설명입니당",
-    tag: ["HTML", "HTML"],
-    day: "마감까지",
-    count: "D-3",
-  },
-  {
-    organ: "기관명",
-    title: "공모전 명",
-    comment: "공모전에 대한 설명입니당",
-    tag: ["HTML", "HTML"],
-    day: "마감까지",
-    count: "D-3",
-  },
-  {
-    organ: "기관명",
-    title: "공모전 명",
-    comment: "공모전에 대한 설명입니당",
-    tag: ["HTML", "HTML"],
-    day: "마감까지",
-    count: "D-3",
-  },
-  {
-    organ: "기관명",
-    title: "공모전 명",
-    comment: "공모전에 대한 설명입니당",
-    tag: ["HTML", "HTML"],
-    day: "마감까지",
-    count: "D-3",
-  },
-  {
-    organ: "기관명",
-    title: "공모전 명",
-    comment: "공모전에 대한 설명입니당",
-    tag: ["HTML", "HTML"],
-    day: "마감까지",
-    count: "D-3",
-  },
-  {
-    organ: "기관명",
-    title: "공모전 명",
-    comment: "공모전에 대한 설명입니당",
-    tag: ["HTML", "HTML"],
-    day: "마감까지",
-    count: "D-3",
-  },
-  {
-    organ: "기관명",
-    title: "공모전 명",
-    comment: "공모전에 대한 설명입니당",
-    tag: ["HTML", "HTML"],
-    day: "마감까지",
-    count: "D-3",
-  },
-  {
-    organ: "기관명",
-    title: "공모전 명",
-    comment: "공모전에 대한 설명입니당",
-    tag: ["HTML", "HTML"],
-    day: "마감까지",
-    count: "D-3",
+    organ: "신용보증재단",
+    title: "별빛 신사리",
+    comment: "관악구 상권 활성화를 목표로한 공모전",
+    tag: ["웹/앱", "관악구 시장"],
+    day: "",
+    count: "",
   },
 ];
 
 const Item = ({ organ, title, comment, tag, day, count }) => (
-  <View style={styles.container}>
-    <View style={styles.header}>
-      <Image source={profile} style={styles.profile} />
-      <View>
-        <Text style={styles.hostName}>{organ}</Text>
-        <Text style={styles.name}>{title}</Text>
-      </View>
-    </View>
-    <View>
-      <Text style={styles.info}>{comment}</Text>
-      <View style={styles.tagContainer}>
-        <Text style={styles.tag}>{tag[0]}</Text>
-        <Text style={styles.tag}>{tag[1]}</Text>
-      </View>
-    </View>
-    <View style={styles.bottom}>
-      <View style={styles.dDayContainer}>
-        <Text style={styles.text}>{day}지</Text>
-        <Text style={styles.dDay}>{count}</Text>
-      </View>
-      <TouchableOpacity style={styles.button}>
-        <Image source={filledHeart} />
-      </TouchableOpacity>
-    </View>
-  </View>
+ 
 );
 
 const CompetitionCard = () => {
@@ -172,7 +84,7 @@ const styles = StyleSheet.create({
   wholecontainer: {
     flex: 1,
     marginLeft: 7,
-    backgroundColor: '#fff',
+    backgroundColor: "#fff",
   },
   container: {
     width: 168,
@@ -184,7 +96,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: "rgba(221, 221, 221, 1)",
     borderRadius: 14,
-    backgroundColor: '#FAFAFA'
+    backgroundColor: "#FAFAFA",
   },
   header: {
     width: "100%",
@@ -209,15 +121,17 @@ const styles = StyleSheet.create({
     fontWeight: 700,
   },
   info: {
+    width: 120,
     marginTop: 8,
     fontSize: 12,
     fontWeight: 400,
+    marginLeft: -29,
     color: "rgba(90, 90, 90, 1)",
   },
   tagContainer: {
     flexDirection: "row",
     marginTop: 8,
-    marginLeft: -6,
+    marginLeft: -35,
   },
   tag: {
     paddingTop: 2,

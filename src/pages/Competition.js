@@ -22,7 +22,6 @@ const SecondRoute = () => <ITTab />;
 const ThirdRoute = () => <SWTab />;
 const FourthRoute = () => <GameTab />;
 const FifthRoute = () => <UIUXTab />;
-const SixthRoute = () => <CharTab />;
 
 const renderScene = SceneMap({
   first: FirstRoute,
@@ -30,7 +29,6 @@ const renderScene = SceneMap({
   third: ThirdRoute,
   fourth: FourthRoute,
   fifth: FifthRoute,
-  sixth: SixthRoute,
 });
 
 const Competition = () => {
@@ -38,11 +36,10 @@ const Competition = () => {
   const [index, setIndex] = React.useState(0);
   const [routes] = React.useState([
     { key: "first", title: "전체" },
-    { key: "second", title: "IT" },
-    { key: "third", title: "소프트웨어" },
+    { key: "second", title: "교내" },
+    { key: "third", title: "IT" },
     { key: "fourth", title: "게임" },
     { key: "fifth", title: "UXUI" },
-    { key: "sixth", title: "캐릭터" },
   ]);
 
   const renderTabBar = (props) => (
