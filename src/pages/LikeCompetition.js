@@ -17,12 +17,10 @@ const LikeCompetition = () => {
 const styles = StyleSheet.create({
   container: {
       flex: 1,
-      paddingLeft: 16,
-      paddingRight: 16,
       backgroundColor: 'rgba(255, 255, 255, 1)'
   },
   scroll: {
-    marginTop: 40
+    marginTop: 10
   },
   cardContainer: {
     flex: 1,

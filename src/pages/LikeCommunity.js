@@ -63,7 +63,6 @@ const styles = StyleSheet.create({
     backgroundColor: 'white'
   },
   tab_container: {
-    marginTop: 30,
     flexDirection: 'row',
     justifyContent: 'space-evenly',
     alignItems: 'center',

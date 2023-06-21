@@ -38,7 +38,7 @@ const MyStack = () => {
             <Stack.Screen name="Setting" component={Setting}/>
             <Stack.Screen name="BookBarCode" component={BookBarCode}/>
             <Stack.Screen name="CouncilCard" component={CouncilCard} options={{headerShown: false}}/>
-            <Stack.Screen name="Council" component={Council} options={{headerShown: false}}/>
+            <Stack.Screen name="Council" component={Council}/>
             <Stack.Screen name="LikeCommunity" component={LikeCommunity}/>
             <Stack.Screen name="LikeCompetition" component={LikeCompetition}/>
         </Stack.Navigator>
