@@ -3,43 +3,42 @@ import { View, Text, FlatList, StyleSheet } from "react-native";
 
 const meal = [
   {
-    MLSV_YMD: "20230607",
-    date: "수",
+    MLSV_YMD: "20230622",
+    date: "목",
     DDISH_NM1:
-      "계란볶음밥*  (1.2.5.6.10.13.)<br/>마라탕  (1.2.5.6.12.13.16.17.)<br/>짜사이무침  <br/>꿔바로우탕수육  (1.5.6.10.12.13.)<br/>얼려먹는주스(피치팝)  (11.13.)<br/>양상추샐러드*  (5.12.13.)",
+      "곤드레밥&부추양념장<br/>\n북엇국<br/>상추치커리무침<br/>\n푸실리칠리볶음<br/>배추김치",
     DDISH_NM2:
-      "찹쌀밥  <br/>찹쌀도넛  (1.2.5.6.)<br/>오징어무국  (17.)<br/>스크램블에그  (1.)<br/>갈비김치찜  (5.6.9.10.13.)<br/>깍두기  (9.)",
+      "현미밥<br/>순두부찌개<br/>상추치커리무침<br/>호박볶음<br/>배추김치<br/>수리취떡",
+    DDISH_NM3:
+      "추가밥<br/>양송이스프<br/>볶음김치<br/>웨지감사&소스<br/>상하이치킨버거<br/>에이드",
+  },
+  {
+    MLSV_YMD: "20230623",
+    date: "금",
+    DDISH_NM1: "쌀밥<br/>쑥갓어묵국<br/>돈육장조림<br/>돌자반<br/>볶음김치",
+    DDISH_NM2:
+      "찹쌀밥<br/>반계탕<br/>오징어김치전<br/>두부까스<br/>석박지<br/>오이소박이<br/>식혜",
     DDISH_NM3: "",
   },
   {
-    MLSV_YMD: "20230608",
-    date: "목",
-    DDISH_NM1:
-      "찹쌀밥  <br/>달걀북어국.  (1.13.)<br/>안동찜닭(중)  (1.5.6.8.13.15.18.)<br/>오이무침  (5.6.13.)<br/>배추김치  (9.)",
-    DDISH_NM2:
-      "추가밥(쌀밥)  <br/>볶음김치  (5.9.12.13.)<br/>씨리얼&우유  (2.5.6.13.)<br/>핫도그빵  (1.2.5.6.10.12.13.15.16.)<br/>청포도*  ",
-    DDISH_NM3:
-      "흑미밥  <br/>차돌된장찌개  (5.6.13.16.)<br/>상추겉절이  (13.)<br/>계란말이  (1.5.)<br/>통마늘삼겹오븐구이  (10.)<br/>배추김치  (9.)",
-  },
-  {
-    MLSV_YMD: "20230609",
-    date: "금",
-    DDISH_NM1:
-      "추가밥(쌀밥)  <br/>낙지김치죽  (9.)<br/>미역장국  (5.6.7.13.18.)<br/>사각햄구이전  (1.2.5.6.10.15.)<br/>백김치  (9.)<br/>리치에이드  ",
-    DDISH_NM2:
-      "찹쌀밥  <br/>감자수제비국(매콤)  (5.6.9.13.)<br/>함박스테이크  (1.2.5.6.10.12.13.)<br/>생깻잎지  (5.6.13.)<br/>건파래볶음  (5.13.)<br/>깍두기  (9.)<br/>요거트(소와나무생크림)  (2.)",
-    DDISH_NM3:
-      "짜장덮밥  (5.6.10.13.16.)<br/>계란파국  (1.9.13.)<br/>유린기  (1.5.6.13.15.)<br/>단무지  <br/>시리얼과일샐러드(S)  (1.2.5.6.12.13.)<br/>골라먹는짜요짜요(3가지맛)  (2.)",
-  },
-  {
-    MLSV_YMD: "20230612",
+    MLSV_YMD: "20230626",
     date: "월",
     DDISH_NM1:
-      "찹쌀밥  <br/>콩나물국(매콤)  (5.13.)<br/>오이지무침(J)  (13.)<br/>한입돈까스  (1.5.6.10.12.13.16.)<br/>배추김치  (9.)",
+      "추가밥<br/>치즈앤치즈핫도그<br/>배추김치<br/>씨리얼&우유<br/>두유",
     DDISH_NM2:
-      "찹쌀밥  <br/>육개장2  (1.16.)<br/>도라지무침  (5.6.13.)<br/>동그랑땡&케찹  (1.2.5.6.10.12.15.16.)<br/>순살가자미튀김  (5.6.12.)<br/>깍두기  (9.)",
+      "찹쌀밥<br/>김치찌개<br/>쫄면<br/>머위대들깨볶음<br/>통안심돈까스<br/>깍두기",
     DDISH_NM3:
-      "간장계란밥  (1.2.5.6.)<br/>돼지고기짜글이(J)  (5.6.10.13.)<br/>볶음김치  (5.9.12.13.)<br/>멘츠까스  (1.5.6.10.12.13.16.)<br/>망고푸딩  <br/>도시락김  (13.)",
+      "추가밥<br/>짜장면<br/>오징어짬뽕국<br/>꿔바로우탕수육<br/>배추김치<br/>단무지<br/>메로나튜브",
+  },
+  {
+    MLSV_YMD: "20230627",
+    date: "화",
+    DDISH_NM1:
+      "추가밥<br/>만둣국<br/>진미채볶음<br/>동그랑땡&케찹<br/>배추김치",
+    DDISH_NM2:
+      "혼합잡곡밥<br/>얼큰콩나물국<br/>부추겉절이<br/>매콤오리주물럭<br/>해물파전<br/>깍두기<br/>마시는런요거트",
+    DDISH_NM3:
+      "쌀밥<br/>소고기무국<br/>갈비찜<br/>참나물무침<br/>어묵볶음<br/>배추김치",
   },
 ];
 
@@ -49,8 +48,23 @@ const renderMeal = ({ item }) => {
   const mealInfo1 = item.DDISH_NM2.split("<br/>");
   const mealInfo2 = item.DDISH_NM3.split("<br/>");
 
+  let m1 = mealInfo.join(" / ");
+  let m2 = mealInfo1.join(" / ");
+  let m3 = mealInfo2.join(" / ");
+
   const dateString =
     item.MLSV_YMD.substr(4, 2) + "." + item.MLSV_YMD.substr(6, 2);
+
+  const showTodayText = (MLSV_YMD) => {
+    let todayDate = new Date().getDate() + 1;
+    console.log(MLSV_YMD.substr(6, 7) + "오늘 : " + todayDate);
+    console.log(MLSV_YMD.substr(6, 7) == todayDate);
+    if (MLSV_YMD.substr(6, 7) == todayDate) {
+      return "Today";
+    } else {
+      return "";
+    }
+  };
 
   return (
     <View style={styles.element}>
@@ -60,28 +74,45 @@ const renderMeal = ({ item }) => {
           <Text style={styles.day}>{dateString}</Text>
         </View>
         <View>
-          <Text style={styles.body}>{/* {item.isToday} */}</Text>
+          <Text style={styles.today}>{showTodayText(item.MLSV_YMD)}</Text>
         </View>
       </View>
       <View style={styles.mealInfo}>
         <Text style={styles.mealName}>아침</Text>
-        {mealInfo.map((info, index) => (
-          <Text style={styles.mealList} key={index}>
-            {info}
-          </Text>
-        ))}
+        <Text style={styles.mealList}>
+          {m1.split(" / ").map((item, index) => (
+            <Text key={index}>
+              {item}
+              {index !== m1.split(" / ").length - 1 && (
+                <Text style={styles.separator}> / </Text>
+              )}
+            </Text>
+          ))}
+        </Text>
         <Text style={styles.mealName}>점심</Text>
-        {mealInfo1.map((info, index) => (
-          <Text style={styles.mealList} key={index}>
-            {info}
-          </Text>
-        ))}
-        <Text style={styles.mealName}>저녁</Text>
-        {mealInfo2.map((info, index) => (
-          <Text style={styles.mealList} key={index}>
-            {info}
-          </Text>
-        ))}
+        <Text style={styles.mealList}>
+          {m2.split(" / ").map((item, index) => (
+            <Text key={index}>
+              {item}
+              {index !== m1.split(" / ").length - 1 && (
+                <Text style={styles.separator}> / </Text>
+              )}
+            </Text>
+          ))}
+        </Text>
+        <Text style={styles.mealName}>
+          {mealInfo2.length == 1 ? "" : "저녁"}
+        </Text>
+        <Text style={styles.mealList}>
+          {m3.split(" / ").map((item, index) => (
+            <Text key={index}>
+              {item}
+              {index !== m1.split(" / ").length - 1 && (
+                <Text style={styles.separator}> / </Text>
+              )}
+            </Text>
+          ))}
+        </Text>
       </View>
     </View>
   );
@@ -115,6 +146,10 @@ const styles = StyleSheet.create({
     // 양쪽 옆에 가려지는 불편함
   },
 
+  separator: {
+    color: "#e9e9e9", // 슬래시(/)의 색상을 변경하려면 여기에 원하는 스타일을 적용하세요
+  },
+
   mealDiv: {
     display: "flex",
     justifyContent: "space-between",
@@ -123,7 +158,10 @@ const styles = StyleSheet.create({
   },
 
   mealInfo: {
-    height: 21,
+    height: 100,
+    background: "#FFFFFF",
+    border: "1px solid #EDEDED",
+    borderRadius: 16,
   },
 
   mealTitle: {
@@ -132,6 +170,14 @@ const styles = StyleSheet.create({
     marginLeft: 2,
     marginTop: 24,
     marginBottom: 24,
+  },
+
+  today: {
+    fontSize: 14,
+    fontWeight: 700,
+    color: "#17E381",
+    marginTop: 2,
+    marginLeft: 7,
   },
 
   more: {
@@ -149,7 +195,7 @@ const styles = StyleSheet.create({
   element: {
     display: "flex",
     width: 185,
-    height: 450,
+    height: 440,
     backgroundColor: "#FFFFFF",
     borderWidth: 1,
     borderStyle: "solid",
@@ -158,6 +204,13 @@ const styles = StyleSheet.create({
     borderRadius: 16,
     marginLeft: 4,
     marginRight: 4,
+    shadowColor: "#EDEDED",
+    shadowOffset: {
+      width: -10,
+      height: 3,
+    },
+    shadowOpacity: 0.3,
+    shadowRadius: 3,
   },
 
   row: {
@@ -171,7 +224,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
   },
   weekday: {
-    fontSize: 26,
+    fontSize: 20,
     fontWeight: 500,
     marginRight: 3,
   },
@@ -179,21 +232,24 @@ const styles = StyleSheet.create({
   day: {
     display: "flex",
     flexDirection: "row",
-    marginTop: 8,
+    fontSize: 12,
+    marginTop: 4,
     color: "#A7A7A7",
   },
 
   mealName: {
-    fontSize: 16,
+    fontSize: 14,
     fontWeight: 500,
     paddingTop: 10,
-    paddingBottom: 20,
+    paddingBottom: 10,
   },
 
   mealList: {
+    flexShrink: 0,
     color: "#8A8A8A",
     fontSize: 14,
-    gap: 5,
+    gap: 0,
+    lineHeight: 24,
   },
 
   body: {},
