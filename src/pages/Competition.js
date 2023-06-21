@@ -13,7 +13,6 @@ import ITTab from "../components/competition/ITTab";
 import SWTab from "../components/competition/SWTab";
 import GameTab from "../components/competition/GameTab";
 import UIUXTab from "../components/competition/UIUXTab";
-import CharTab from "../components/competition/CharTab";
 
 const Stack = createStackNavigator();
 

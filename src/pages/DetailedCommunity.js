@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { StyleSheet, View,Text, Image, TouchableOpacity, TextInput, 
-    KeyboardAvoidingView,Pressable,Keyboard,Platform, FlatList, ScrollView } from "react-native";
-import like from "../assets/community/thumb.png";
+import { StyleSheet, View,Text, Image, TouchableOpacity, TextInput,
+    KeyboardAvoidingView,Pressable,Keyboard,Platform, FlatList, ScrollView, TouchableWithoutFeedback } from "react-native";
 import share from "../assets/community/share-ios.png";
 import horn from "../assets/community/horn.png";
 import profile from "../assets/mypage/profile.png";
@@ -11,6 +10,7 @@ import axios from "axios";
 
 const DetailedCommunity = ({navigation, route}) => {
     const postID = route.params.id;
+
     const [replyValue, setReplyValue] = useState('');
     const [reply, setReply] = useState([
         {
@@ -19,51 +19,81 @@ const DetailedCommunity = ({navigation, route}) => {
             nickname: '',
             reply_content: '',
             reply_date: '',
+            reply_profile: ''
         }
     ]);
     const [post, setPost] = useState([]);
+    //좋아요 이미지 누를 시 
+    const handleButtonPress = async () => {
+        await setImageIdx((preIndex) => (preIndex === 0 ? 1 : 0));
+        //1: 좋아요 취소, 0 : 좋아요!
+        // await AsyncStorage.setItem('imageIdx', imageIdx);
+    }
+    //좋아요 눌렀는지 아닌지 가져오기
+    // const getImage = async () => {
+    //     console.log(imageIdx)
+    //     return await AsyncStorage.getItem('imageIdx');
+    // }
     const [imageIdx, setImageIdx] = useState(0);
     const images = [
         require('../assets/community/thumb.png'),
         require('../assets/community/thumb-up.png')
     ];
-
+    //게시글 내용 가져오기
     useEffect(()=> {
         axios.get(`http://10.96.123.101:3300/community/${postID}`, {
         headers: {'Content-Type': 'application/json'}
         }).then(res =>{ 
-            // const data = res.json();
-            setPost(res.data.post[0]) //게시글 내용
-            setReply(res.data.reply)
-            // console.log('게시글 내용 : ',res.data.post[0])
-            // console.log('댓글 내용 --> ',res.data.reply[0])
-            // setReply(data.reply) //게시글 댓글
+            setPost(res.data)
         })
         .catch(err => console.log('/community/:postID 에러', err))
+    }, [])
+
+    //댓글 가져오기
+    useEffect(() => {
+        axios.get(`http://10.96.123.101:3300/community/reply/${postID}`, {
+            headers: {'Content-Type': 'application/json'}
+        }).then(res => {
+            setReply(res.data)
+        })
     }, [reply])
-    //댓글 추가 버튼 이벤트
-    const addReply = () => {
-        console.log(replyValue);
-        
-        axios.post(`http://10.96.123.101:3300/community/${postID}`, {replyValue: replyValue}, {
+
+    //댓글 추가하기
+    const addReply = async () => {
+        console.log('댓글 추가');
+          
+        Keyboard.dismiss();
+        axios.post(`http://10.96.123.101:3300/community/${postID}`, 
+            {
+                replyValue: replyValue
+            }, {
 
         }).then(res => console.log('새로운 댓글 추가 완료!'))
         .catch(err => console.log('에러 발생!'))
+
+        await Notifications.scheduleNotificationAsync({
+            content: {
+              title: 'Toast Message',
+              body: '댓글이 추기되었습니다.',
+            },
+            trigger: null, // 즉시 표시하려면 'trigger'를 null로 설정합니다.
+        }).then(res => console.log('토스트메시지'));
     }
-    const handleButtonPress = () => {
-        setImageIdx((preIndex) => (preIndex === 0 ? 1 : 0));
-    }
+
     const renderItem = ({item}) => {
         return(
-            <ScrollView>
+            <TouchableWithoutFeedback>
                 <View style={styles.replyBox}>
                     <View style={styles.replyUser}>
-                        <Image source={profile} style={{width: 36, height: 36}}/>
+                        <Image source={{uri: item.reply_profile}} style={{width: 36, height: 36}}/>
                         <Text>{item.nickname}</Text>
                     </View>
-                    <Text>{item.reply_content}</Text>
+                    <View style={styles.replyBox2}>
+                        <Text style={styles.replyContent}>{item.reply_content}</Text>
+                        <Text style={styles.replyDate}>{item.reply_date}</Text>
+                    </View>
                 </View>
-            </ScrollView>
+            </TouchableWithoutFeedback>
         )
     }
     return(
@@ -101,12 +131,11 @@ const DetailedCommunity = ({navigation, route}) => {
                         </TouchableOpacity>
                     </View>
                 </View>
-                    <View>
-                    <FlatList 
-                        data={reply}
-                        renderItem={renderItem}/>
-                    </View>
                 
+            <FlatList 
+                style={styles.scroll}
+                data={reply}
+                renderItem={renderItem}/>
             </View>
             <KeyboardAvoidingView behavior={Platform.OS == 'ios' ? 'padding' : null}>
             <View style={styles.footer}>
@@ -155,6 +184,9 @@ const styles = StyleSheet.create({
     infoText: {
         color: '#A7A7A7',
     },
+    scroll: {
+        zIndex: 1000
+    },
     iconBox: {
         flexDirection: 'row',
         alignItems: 'center',
@@ -167,7 +199,7 @@ const styles = StyleSheet.create({
         height: 32
     },
     footer: {
-        padding: 100,
+        paddingBottom: 100,
         paddingTop: 10,
         backgroundColor: 'white',
         flexDirection: 'row',
@@ -206,6 +238,22 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         gap: 8,
     },
+    replyBox2: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        gap: 20,
+    },
+    replyContent: {
+        fontWeight: 500,
+        fontSize: 16,
+        paddingBottom: 4,
+        paddingTop: 4
+    },
+    replyDate: {
+        color: '#CDCDCD',
+        position: 'absolute',
+        right: 8,
+    }
 });
 
 export default DetailedCommunity;

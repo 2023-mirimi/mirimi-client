@@ -27,9 +27,9 @@ const Schedule = () => {
         <Text style={style.day}>금</Text>
       </View>
       <View style={style.rowContainer}>
-        <View style={style.row}>
+        <View style={style.row2}>
           <Text style={style.num}>1</Text>
-          <Item style={style.leftTop} id="1" />
+          <Item id="1" />
           <Item id="2" />
           <Item id="3" />
           <Item id="4" />
@@ -67,6 +67,10 @@ const Schedule = () => {
           <Item id="24" />
           <Item id="25" />
         </View>
+        <View style={style.row1Lunch}>
+          <Text style={style.num}></Text>
+          <Text style={style.lunch}>점심시간</Text>
+        </View>
         <View style={style.row}>
           <Text style={style.num}>6</Text>
           <Item id="26" />
@@ -99,13 +103,13 @@ const Schedule = () => {
           <Item id="44" />
           <Item id="45" />
         </View>
-        <View style={style.row}>
+        <View style={style.row1}>
           <Text style={style.num}>10</Text>
-          <Item style={style.leftBottom} id="46" />
+          <Item id="46" />
           <Item id="47" />
           <Item id="48" />
           <Item id="49" />
-          <Item style={style.rightBottom} id="50" />
+          <Item id="50" />
         </View>
       </View>
     </View>
@@ -142,6 +146,31 @@ const style = StyleSheet.create({
     flexDirection: "row",
   },
 
+  row1: {
+    flexDirection: "row",
+    marginLeft: -6,
+  },
+
+  row2: {
+    flexDirection: "row",
+    marginLeft: 2,
+  },
+
+  row1Lunch: {
+    flexDirection: "row",
+    marginLeft: 24,
+    marginRight: 2,
+    height: 61,
+    backgroundColor: "#E9E9E9",
+    alignItems: "center",
+    paddingLeft: 113,
+  },
+
+  lunch: {
+    fontSize: 12,
+    color: "#8A8A8A",
+  },
+
   num: {
     fontSize: 14,
     color: "#8A8A8A",
@@ -155,9 +184,5 @@ const style = StyleSheet.create({
     marginLeft: 2,
     marginTop: 24,
     marginBottom: 24,
-  },
-
-  leftTop: {
-    borderRadius: 12,
   },
 });

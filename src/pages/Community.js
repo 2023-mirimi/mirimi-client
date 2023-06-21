@@ -1,16 +1,17 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { createStackNavigator } from "@react-navigation/stack";
 
 const Stack = createStackNavigator();
 
 import { useWindowDimensions, Text, StyleSheet, View } from 'react-native';
 import { TabView, SceneMap, TabBar } from 'react-native-tab-view';
-import AllTab from "../components/competition/AllTab";
+import AllTab from "../components/community/AllTab";
 import DailyTab from "../components/community/DailyTab";
 import EmploymentTab from "../components/community/EmploymentTab";
 import SchoolTab from "../components/community/SchoolTab";
 import ContestTab from "../components/community/ContestTab";
 import Header from '../components/header';
+import { useNavigation } from "@react-navigation/native";
 
 const FirstRoute = () => (
   <AllTab/>
@@ -33,20 +34,32 @@ const FifthRoute = () => (
 const renderScene = SceneMap({
   first: FirstRoute,
   second: SecondRoute,
-	third: ThirdRoute
+	third: ThirdRoute,
+  fourth: FourthRoute,
+  fifth: FifthRoute
 });
 
 const Community = () => {
   const layout = useWindowDimensions();
-
+  const renderLazyPlaceholder = () => {
+    return (
+      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+        <Text>Loading...</Text>
+      </View>
+    );
+  };
   const [index, setIndex] = React.useState(0);
   const [routes] = React.useState([
     { key: 'first', title: '전체' },
     { key: 'second', title: '일상' },
-		{ key: 'third', title: '지도'}
+		{ key: 'third', title: '취업'},
+		{ key: 'fourth', title: '학교'},
+		{ key: 'fifth', title: '공모전'},
   ]);
 
-	const renderTabBar = (props) => (
+	const renderTabBar = (props) => {
+
+    return (
 		<TabBar
 			{...props}
 			indicatorStyle={{ backgroundColor: 'rgba(23, 227, 129, 1)' }}
@@ -57,7 +70,7 @@ const Community = () => {
 				</Text>
 			)}
 		/>
-	);
+	)};
 
   return (
     <>
@@ -69,7 +82,8 @@ const Community = () => {
         renderScene={renderScene}
         onIndexChange={setIndex}
         initialLayout={{ width: layout.width }}
-			//   renderTabBar={renderTabBar}
+			  renderTabBar={renderTabBar}
+        lazyPlaceholder={renderLazyPlaceholder}
         />
     </>
     

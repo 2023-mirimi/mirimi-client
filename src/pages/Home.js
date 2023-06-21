@@ -7,13 +7,12 @@ import {
   Image,
   TouchableOpacity,
 } from "react-native";
-import { SliderBox } from "react-native-image-slider-box";
 import { createStackNavigator } from "@react-navigation/stack";
 
 import Header from "../components/header";
 import HomeSwiper from "../components/home/HomeSwiper";
 import Schedule from "../components/home/Schedule";
-import MealFlatlist from "../components/home/MealFlatlist";
+import MealFlatList from "../components/home/MealFlatlist";
 
 const Stack = createStackNavigator();
 
@@ -24,7 +23,7 @@ const Home = () => {
         {/* 헤더 */}
         <Header name={"홈"} />
         <HomeSwiper />
-        <MealFlatlist />
+        <MealFlatList />
         <Schedule />
       </View>
     </ScrollView>

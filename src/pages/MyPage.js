@@ -13,7 +13,7 @@ const MyPage = () => {
   const navigation = useNavigation();
   const [userName, setUserName] = useState('');
   const [grade, setGrade] = useState('')
-
+  const url = 'https://mirimibucket.s3.ap-northeast-2.amazonaws.com/profile/profile.png';
   useEffect(() => {
     fetchUserData();
   }, []);
@@ -48,15 +48,13 @@ const MyPage = () => {
       <View style={styles.body}>
         <View style={styles.box}>
         <View style={styles.textBox}>
-            <Image source={profile}/>
+            <Image source={require('../assets/school/council.png')}/>
             <View style={styles.infoBox}>
-                <Text style={styles.grade}>{grade}</Text>
-                <Text style={styles.name}>{userName}</Text>
+                <Text style={styles.grade}>1234</Text>
+                <Text style={styles.name}>미림의 독개구리</Text>
             </View>
           </View>
-          <TouchableOpacity onPress={() => navigation.navigate('Setting')}>
             <Image source={settings}/>
-          </TouchableOpacity>
         </View>
         <View style={styles.box2}>
           <TouchableOpacity style={styles.touchBox} onPress={() => navigation.navigate('LikeCompetition')}>
