@@ -146,7 +146,7 @@ const styles = StyleSheet.create({
       borderStyle: "solid",
       borderColor: "#EDEDED",
       padding: 16,
-      borderRadius: 16s,
+      borderRadius: 16,
       marginLeft: 4,
       marginRight: 4,
     },
