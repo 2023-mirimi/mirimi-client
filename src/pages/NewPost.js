@@ -12,8 +12,10 @@ import poll from "../assets/community/poll.png";
 import pin from "../assets/community/pin.png";
 import { StatusBar } from "expo-status-bar";
 import axios from "axios";
+import { useNavigation } from "@react-navigation/native";
 
-const NewPost = ({navigation}) => {
+const NewPost = () => {
+    const navigation = useNavigation();
     const [post, setPost] = useState({
         title: '',
         category: '',
@@ -97,6 +99,17 @@ const NewPost = ({navigation}) => {
         }
     ]), []);
 
+    const resetFields = () => {
+      setPost({
+        title: '',
+        category: '',
+        content: '',
+        imgs: '',
+      });
+      setImage('');
+      setInputHeight(0);
+    };
+
     const handleInputChange = (key,value) => {
         setPost((prevPostData) => ({
             ...prevPostData,
@@ -149,13 +162,11 @@ const NewPost = ({navigation}) => {
         if(post.title != '' && post.content != ''){
             saveBtn();
             setuploadModalVisible(false);
-            navigation.navigate("Community");
-        } else {
-            
+            navigation.navigate('Root', { screen: 'CommunityNavigator' , params: true});
         }
         //2. db에 게시글 내용 저장
         //3. 커뮤니티 페이지로 이동
-        navigation.replace("Community");
+        resetFields()
     }
     const openModal = () => {
         setuploadModalVisible(true)
@@ -173,15 +184,7 @@ const NewPost = ({navigation}) => {
                     </TouchableOpacity>
                     <Text style={styles.headerTxt}>게시글 작성</Text>
                     <TouchableOpacity 
-                        onPress={
-                            // const uploadResult = saveBtn(); 
-                            // if(uploadResult == "Success"){
-                            //     console.log('게시글 추가 성공!');
-                            //     navigation.navigate("Community")
-                            // } else if(saveBtn() == "Fail") {
-                            //     Alert.alert('업로드 실패', '제목 또는 내용을 입력해주세요')
-                            // }
-                            openModal}>
+                        onPress={openModal}>
                         <Text style={styles.uploadBtn}>업로드</Text>
                     </TouchableOpacity>
                 </View>
