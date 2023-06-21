@@ -1,24 +1,26 @@
 import React, { useState } from "react";
-import { View, Text, StyleSheet } from "react-native";
-// import Tooltip from "react-native-walkthrough-tooltip";
+import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
+import { Ionicons } from "@expo/vector-icons";
 import Item from "./ScheduleItem";
 
 const Schedule = () => {
-  const [showTip, setTip] = useState(false);
+  const [showTip, setTip] = useState(true);
+
+  const handleCloseTooltip = () => {
+    setTip(false);
+  };
+
   return (
     <View style={style.container}>
       <Text style={style.title}>시간표</Text>
-      {/* <Tooltip
-        isVisible={showTip}
-        content={
-          <View>
-            <Text>꾹 눌러서 수정하기</Text>
-          </View>
-        }
-        placement="top"
-        onClose={() => setTip(false)}
-        useInteractionManager={true}
-      ></Tooltip> */}
+      {showTip && (
+        <View style={style.tooltip}>
+          <Text style={style.tooltipText}>꾹 눌러서 수정하기</Text>
+          <TouchableOpacity onPress={handleCloseTooltip}>
+            <Ionicons name="close" size={24} color="black" />
+          </TouchableOpacity>
+        </View>
+      )}
       <View style={style.textRows}>
         <Text style={style.day}>월</Text>
         <Text style={style.day}>화</Text>
@@ -119,6 +121,30 @@ const Schedule = () => {
 export default Schedule;
 
 const style = StyleSheet.create({
+  container: {
+    flex: 1,
+    marginTop: 50,
+    marginVertical: 8,
+    marginHorizontal: 16,
+  },
+  tooltip: {
+    position: "absolute",
+    backgroundColor: "rgba(23, 227, 129, 1)",
+    padding: 6,
+    paddingLeft: 10,
+    borderRadius: 4,
+    top: 10,
+    left: 190,
+    flexDirection: "row",
+    alignItems: "center",
+    elevation: 4,
+    zIndex: 10000,
+  },
+  tooltipText: {
+    fontSize: 14,
+    fontWeight: "500",
+    marginRight: 8,
+  },
   container: {
     flex: 1,
     marginTop: 50,
