@@ -75,7 +75,7 @@ const Community = () => {
   return (
     <>
     <View style={{backgroundColor: '#fff'}}>
-      <Header name={"학교생활"}/>
+      <Header name={"커뮤니티"}/>
     </View>
       <TabView
         navigationState={{ index, routes }}

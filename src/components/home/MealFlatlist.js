@@ -56,7 +56,7 @@ const renderMeal = ({ item }) => {
     item.MLSV_YMD.substr(4, 2) + "." + item.MLSV_YMD.substr(6, 2);
 
   const showTodayText = (MLSV_YMD) => {
-    let todayDate = new Date().getDate() + 1;
+    let todayDate = new Date().getDate();
     console.log(MLSV_YMD.substr(6, 7) + "오늘 : " + todayDate);
     console.log(MLSV_YMD.substr(6, 7) == todayDate);
     if (MLSV_YMD.substr(6, 7) == todayDate) {

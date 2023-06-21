@@ -12,6 +12,7 @@ const DATA = [
     tag: ["NEW", "현재 1기 진행중"],
     day: "",
     count: "진행중",
+    src: "https://www.e-mirim.hs.kr/fbgraph.png"
   },
   {
     organ: "미림마이스터고",
@@ -20,6 +21,7 @@ const DATA = [
     tag: ["교내 공모전", "높은 경쟁률"],
     day: "",
     count: "진행중",
+    src: "https://www.e-mirim.hs.kr/fbgraph.png"
   },
 ];
 
@@ -91,7 +93,7 @@ const styles = StyleSheet.create({
 
   box: {
     width: 190,
-    marginLeft: -40,
+    marginLeft: -10,
     marginTop: 10,
   },
   container: {
