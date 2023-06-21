@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import Item from "./ScheduleItem";
@@ -8,7 +8,17 @@ const Schedule = () => {
 
   const handleCloseTooltip = () => {
     setTip(false);
+    setTimeout(() => {
+      setTip(true);
+    }, 60000);
   };
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setTip(true);
+    }, 60000);
+    return () => clearTimeout(timer);
+  }, []);
 
   return (
     <View style={style.container}>
