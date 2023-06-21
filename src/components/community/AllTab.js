@@ -1,7 +1,10 @@
-import React from "react"
+import React, { useState, useEffect } from "react"
 import { StyleSheet, Text, View, FlatList, TouchableOpacity,Image } from "react-native";
+import { useNavigation } from '@react-navigation/native';
+import BottomTabNavigator from "../../navigation/BottomTabNavigator";
 
 const AllTab = () => {
+	const navigation = useNavigation()
     const [data, setData] = useState([
         {
             post_id: 0,
@@ -10,29 +13,29 @@ const AllTab = () => {
             user: '',
             date: '',
             views: '',
-            comments: '',
-            likes: ''
+            comments: 0,
+            likes: 0
         }
     ]);
-    // useEffect(() => {
-    //     getData();
-    // },[]);
-    // const getData = async () => {
-    //     await fetch('http://10.96.124.51:3300/community', {
-    //         method: 'GET',
-    //         headers: {
-    //             'Content-Type':'application/json'
-    //         }
-    //     }).then(res => res.json())
-    //     .then(json =>{
-    //         setData(json)})
-    // }
+    useEffect(() => {
+        getData();
+    });
+    const getData = async () => {
+        await fetch(`http://10.96.123.101:3300/community`, {
+            method: 'GET',
+            headers: {
+                'Content-Type':'application/json'
+            }
+        }).then(res => res.json())
+        .then(json =>{
+            setData(json)})
+    }
     const renderItem = ({item}) => {
         return(
             <View key={item.id}>
-                <TouchableOpacity onPress={()=>{
-                    navigation.navigate("DetailedCommunity",{id: item.post_id})
-                }} style={styles.postBox} >
+                <TouchableOpacity onPress={()=>
+                    navigation.push("DetailedCommunity",{id: item.post_id})
+                } style={styles.postBox} >
                     <Text style={styles.postCategory}>{item.category}</Text>
                     <Text style={styles.postTitle}>{item.title}</Text>
                     <View style={styles.postInfo}>
@@ -41,9 +44,9 @@ const AllTab = () => {
                         <Text style={styles.postInfoTxt}>{item.post_views}</Text>
                     </View>
                     <View style={styles.postLikes}>
-                        <Image source={require('../assets/community/comment.png')}></Image>
+                        <Image source={require('../../assets/community/comment.png')}></Image>
                         <Text style={styles.postLikesTxt}>{item.comments}</Text>
-                        <Image source={require('../assets/community/thumb.png')}></Image>
+                        <Image source={require('../../assets/community/thumb.png')}></Image>
                         <Text style={styles.postLikesTxt}>{item.likes}</Text>
                     </View>
                 </TouchableOpacity>
@@ -52,18 +55,17 @@ const AllTab = () => {
     }
 
     return(
-        <View>
-            {/* <View style={styles.box}>
+        <View style={{flex: 1,backgroundColor: 'white'}}>
+            <View style={styles.box}>
                 <FlatList 
                     data={data}
                     keyExtractor={item => item.id}
                     renderItem={renderItem}/>
             </View>
-            <TouchableOpacity style={styles.addPost} onPress={()=> navigation.navigate('NewPost')}>
-                    <Image source={require('../assets/community/floating_btn.png')}></Image>
-            </TouchableOpacity> */}
-            <Text>전체 탭</Text>
-        </View>
+            <TouchableOpacity style={styles.addPost} onPress={()=> navigation.push('NewPost')}>
+                    <Image source={require('../../assets/community/floating_btn.png')}></Image>
+            </TouchableOpacity>
+        </View> 
     );
 }
 
@@ -114,11 +116,11 @@ const styles = StyleSheet.create({
         color: '#5A5A5A',
     },
     addPost: {
-        bottom: 0,
-        right: 0,
+        bottom: 10,
+        right: 24,
         position: 'absolute',
-        marginRight: 16,
-        marginBottom: 92,
+        // marginRight: 16,
+        // marginBottom: 92,
         display: 'flex'
     }
 })
