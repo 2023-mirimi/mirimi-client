@@ -13,7 +13,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 import Header from "../components/header";
 import HomeSwiper from "../components/home/HomeSwiper";
 import Schedule from "../components/home/Schedule";
-import MealFlatList from "../components/home/MealFlatList";
+import MealFlatList from "../components/home/MealFlatlist";
 
 const Stack = createStackNavigator();
 
