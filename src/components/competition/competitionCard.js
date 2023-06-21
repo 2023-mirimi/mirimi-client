@@ -55,7 +55,31 @@ const DATA = [
 ];
 
 const Item = ({ organ, title, comment, tag, day, count }) => (
- 
+  <View style={styles.container}>
+  <View style={styles.header}>
+    <Image source={profile} style={styles.profile} />
+    <View>
+      <Text style={styles.hostName}>{organ}</Text>
+      <Text style={styles.name}>{title}</Text>
+    </View>
+  </View>
+  <View>
+    <Text style={styles.info}>{comment}</Text>
+    <View style={styles.tagContainer}>
+      <Text style={styles.tag}>{tag[0]}</Text>
+      <Text style={styles.tag}>{tag[1]}</Text>
+    </View>
+  </View>
+  <View style={styles.bottom}>
+    <View style={styles.dDayContainer}>
+      <Text style={styles.text}>{day}</Text>
+      <Text style={styles.dDay}>{count}</Text>
+    </View>
+    <TouchableOpacity style={styles.button}>
+      <Image source={filledHeart} />
+    </TouchableOpacity>
+  </View>
+</View>
 );
 
 const CompetitionCard = () => {
