@@ -20,7 +20,7 @@ export default Login = ({navigation}) => {
         pw: ''
     });
     const onPressLoginBtn = (data) => {
-        axios.post('http://10.96.123.101:3300/account/login', data, {
+        axios.post('https://port-0-mirimi-server-7xwyjq992llj6avrsp.sel4.cloudtype.app/account/login', data, {
             headers: {
                 'Content-Type': 'application/json',
             }}).then(res => {

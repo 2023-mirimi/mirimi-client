@@ -21,7 +21,7 @@ const AllTab = () => {
         getData();
     });
     const getData = async () => {
-        await fetch(`http://10.96.123.101:3300/community`, {
+        await fetch(`https://port-0-mirimi-server-7xwyjq992llj6avrsp.sel4.cloudtype.app/community`, {
             method: 'GET',
             headers: {
                 'Content-Type':'application/json'

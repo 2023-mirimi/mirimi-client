@@ -22,7 +22,7 @@ const DailyTab = () => {
         getData();
     });
     const getData = async () => {
-        await fetch(`http://10.96.123.101:3300/community/tab/${param}`, {
+        await fetch(`https://port-0-mirimi-server-7xwyjq992llj6avrsp.sel4.cloudtype.app/community/tab/${param}`, {
             method: 'GET',
             headers: {
                 'Content-Type':'application/json'

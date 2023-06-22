@@ -20,7 +20,7 @@ const MyPage = () => {
 
   const fetchUserData = async () => {
     try {
-      const response = await fetch('http://10.96.124.161:3300/account/user', {
+      const response = await fetch('https://port-0-mirimi-server-7xwyjq992llj6avrsp.sel4.cloudtype.app/account/user', {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json'
@@ -50,8 +50,8 @@ const MyPage = () => {
         <View style={styles.textBox}>
             <Image source={require('../assets/school/council.png')}/>
             <View style={styles.infoBox}>
-                <Text style={styles.grade}>1234</Text>
-                <Text style={styles.name}>미림의 독개구리</Text>
+                <Text style={styles.grade}>3학년 3반 11번</Text>
+                <Text style={styles.name}>하진</Text>
             </View>
           </View>
             <Image source={settings}/>
