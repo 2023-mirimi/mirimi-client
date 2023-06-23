@@ -56,7 +56,7 @@ const renderMeal = ({ item }) => {
     item.MLSV_YMD.substr(4, 2) + "." + item.MLSV_YMD.substr(6, 2);
 
   const showTodayText = (MLSV_YMD) => {
-    let todayDate = new Date().getDate();
+    let todayDate = new Date().getDate() + 1;
     console.log(MLSV_YMD.substr(6, 7) + "오늘 : " + todayDate);
     console.log(MLSV_YMD.substr(6, 7) == todayDate);
     if (MLSV_YMD.substr(6, 7) == todayDate) {
@@ -158,7 +158,7 @@ const styles = StyleSheet.create({
   },
 
   mealInfo: {
-    height: 40,
+    height: 100,
     background: "#FFFFFF",
     border: "1px solid #EDEDED",
     borderRadius: 16,
@@ -195,7 +195,7 @@ const styles = StyleSheet.create({
   element: {
     display: "flex",
     width: 185,
-    height: 320,
+    height: 440,
     backgroundColor: "#FFFFFF",
     borderWidth: 1,
     borderStyle: "solid",

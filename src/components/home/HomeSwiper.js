@@ -1,9 +1,10 @@
 import React from "react";
-import { View, Dimensions } from "react-native";
+import { View, Dimensions, TouchableOpacity } from "react-native";
 import { WithLocalSvg } from "react-native-svg";
 import Swiper from "react-native-swiper";
 import Banner1 from "../../assets/home/banner-2.svg";
 import Banner2 from "../../assets/home/banner-3.svg";
+import { useNavigation } from "@react-navigation/native";
 
 const { width } = Dimensions.get("window");
 
@@ -57,6 +58,14 @@ const styles = {
 };
 
 export default function HomeSwpier() {
+
+  const navigation = useNavigation(); // navigation 객체를 초기화합니다.
+
+  // 배너를 눌렀을 때 실행되는 함수로, onBoarding 페이지로 이동합니다.
+  const handleBannerPress = () => {
+    navigation.navigate("온보딩1");
+  };
+
   return (
     <View style={styles.container}>
       <Swiper
@@ -67,12 +76,16 @@ export default function HomeSwpier() {
         showsPagination={false}
         autoplay
       >
-        <View style={styles.slide2}>
-          <WithLocalSvg asset={Banner1} />
-        </View>
-        <View style={styles.slide3}>
-          <WithLocalSvg asset={Banner2} />
-        </View>
+        <TouchableOpacity style={styles.slide2}>
+          <View>
+            <WithLocalSvg asset={Banner1} />
+          </View>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.slide3} onPress={handleBannerPress}>
+          <View>
+            <WithLocalSvg asset={Banner2} />
+          </View>
+        </TouchableOpacity>
       </Swiper>
     </View>
   );

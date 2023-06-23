@@ -15,6 +15,10 @@ import Council from "../pages/Council";
 import LikeCommunity from "../pages/LikeCommunity";
 import LikeCompetition from "../pages/LikeCompetition";
 import Setting from "../pages/Setting";
+import OnBoarding1 from "../pages/onBoarding1";
+import OnBoarding2 from "../pages/onBoarding2";
+import OnBoarding3 from "../pages/onBoarding3";
+import HomeNavigator from "../pages/Home";
 
 const Stack = createNativeStackNavigator();
 
@@ -41,6 +45,10 @@ const MyStack = () => {
             <Stack.Screen name="Council" component={Council}/>
             <Stack.Screen name="LikeCommunity" component={LikeCommunity}/>
             <Stack.Screen name="LikeCompetition" component={LikeCompetition}/>
+            <Stack.Screen name='온보딩1' component={OnBoarding1} options={{headerShown: false}}/>
+            <Stack.Screen name='온보딩2' component={OnBoarding2} options={{headerShown: false}}/>
+            <Stack.Screen name='온보딩3' component={OnBoarding3} options={{headerShown: false}}/>
+            <Stack.Screen name="HomeNavigator" component={HomeNavigator} options={{headerShown: false}}/>
         </Stack.Navigator>
     );
 }
