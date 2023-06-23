@@ -7,8 +7,8 @@ const CouncilTab = () => {
     <View style={styles.container}>
       <ScrollView style={styles.scroll}>
         <View style={styles.cardContainer}>
-          {data.map((a) => (
-            <CouncilCard content={a.content} date={a.date} src={a.src} />
+          {data.map((a, idx) => (
+            <CouncilCard  key={idx} content={a.content} date={a.date} src={a.src} />
           ))}
         </View>
       </ScrollView>

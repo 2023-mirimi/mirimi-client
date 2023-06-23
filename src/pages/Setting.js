@@ -20,7 +20,7 @@ const Setting = ({ navigation }) => {
 
   const fetchUserData = async () => {
     try {
-      const response = await fetch('http://10.96.124.161:3300/account/user', {
+      const response = await fetch('https://port-0-mirimi-server-7xwyjq992llj6avrsp.sel4.cloudtype.app/account/user', {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json'

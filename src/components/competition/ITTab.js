@@ -77,7 +77,7 @@ const ITTab = () => {
             src={item.src}
           />
         )}
-        keyExtractor={(item, index) => index}
+        keyExtractor={(item, index) => index.toString()}
         numColumns={2}
       />
     </View>

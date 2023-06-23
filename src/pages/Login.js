@@ -1,4 +1,4 @@
-import { useNavigation } from '@react-navigation/native';
+// import { useNavigation } from '@react-navigation/native';
 import React, { useState } from 'react'
 import { View, Image, StyleSheet, TextInput, Text, TouchableOpacity, Button,Alert } from "react-native";
 import BouncyCheckbox from "react-native-bouncy-checkbox";
@@ -20,7 +20,7 @@ export default Login = ({navigation}) => {
         pw: ''
     });
     const onPressLoginBtn = (data) => {
-        axios.post('http://10.96.123.101:3300/account/login', data, {
+        axios.post('https://port-0-mirimi-server-7xwyjq992llj6avrsp.sel4.cloudtype.app/account/login', data, {
             headers: {
                 'Content-Type': 'application/json',
             }}).then(res => {
@@ -47,7 +47,6 @@ export default Login = ({navigation}) => {
     return(
         <View style={styles.container}>
             <Image style={styles.icon} source={require('../assets/icon.png')}></Image>
-            <Image source={require('../assets/mirimi.png')}></Image>
             <View style={styles.login}>
                 <TextInput 
                     value={inputData.email}

@@ -1,7 +1,7 @@
 import { StyleSheet, Text, View, TouchableOpacity, Image } from "react-native";
 import council from "../../assets/school/council.png";
 import { useNavigation } from "@react-navigation/native";
-import CouncilTab from "./councilTab";
+// import CouncilTab from "./councilTab";
 
 const CouncilCard = (props) => {
   const navigation = useNavigation();

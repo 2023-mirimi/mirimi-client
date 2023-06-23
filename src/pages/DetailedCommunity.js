@@ -3,7 +3,7 @@ import { StyleSheet, View,Text, Image, TouchableOpacity, TextInput,
     KeyboardAvoidingView,Pressable,Keyboard,Platform, FlatList, ScrollView, TouchableWithoutFeedback } from "react-native";
 import share from "../assets/community/share-ios.png";
 import horn from "../assets/community/horn.png";
-import profile from "../assets/mypage/profile.png";
+// import profile from "../assets/mypage/profile.png";
 import Return from "../assets/community/return.png";
 import More from "../assets/community/more.png";
 import axios from "axios";
@@ -41,7 +41,7 @@ const DetailedCommunity = ({navigation, route}) => {
     ];
     //게시글 내용 가져오기
     useEffect(()=> {
-        axios.get(`http://10.96.123.101:3300/community/${postID}`, {
+        axios.get(`https://port-0-mirimi-server-7xwyjq992llj6avrsp.sel4.cloudtype.app/community/${postID}`, {
         headers: {'Content-Type': 'application/json'}
         }).then(res =>{ 
             setPost(res.data)
@@ -51,7 +51,7 @@ const DetailedCommunity = ({navigation, route}) => {
 
     //댓글 가져오기
     useEffect(() => {
-        axios.get(`http://10.96.123.101:3300/community/reply/${postID}`, {
+        axios.get(`https://port-0-mirimi-server-7xwyjq992llj6avrsp.sel4.cloudtype.app/community/reply/${postID}`, {
             headers: {'Content-Type': 'application/json'}
         }).then(res => {
             setReply(res.data)
@@ -63,7 +63,7 @@ const DetailedCommunity = ({navigation, route}) => {
         console.log('댓글 추가');
           
         Keyboard.dismiss();
-        axios.post(`http://10.96.123.101:3300/community/${postID}`, 
+        axios.post(`https://port-0-mirimi-server-7xwyjq992llj6avrsp.sel4.cloudtype.app/community/${postID}`, 
             {
                 replyValue: replyValue
             }, {
@@ -135,7 +135,8 @@ const DetailedCommunity = ({navigation, route}) => {
             <FlatList 
                 style={styles.scroll}
                 data={reply}
-                renderItem={renderItem}/>
+                renderItem={renderItem}
+                keyExtractor={(item, index) => index.toString()}/>
             </View>
             <KeyboardAvoidingView behavior={Platform.OS == 'ios' ? 'padding' : null}>
             <View style={styles.footer}>

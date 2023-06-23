@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react"
 import { StyleSheet, Text, View, FlatList, TouchableOpacity,Image } from "react-native";
 import { useNavigation } from '@react-navigation/native';
-import BottomTabNavigator from "../../navigation/BottomTabNavigator";
+// import BottomTabNavigator from "../../navigation/BottomTabNavigator";
 
 const SchoolTab = () => {
 	const navigation = useNavigation()
@@ -22,7 +22,7 @@ const SchoolTab = () => {
         getData();
     });
     const getData = async () => {
-        await fetch(`http://10.96.123.101:3300/community/tab/${param}`, {
+        await fetch(`https://port-0-mirimi-server-7xwyjq992llj6avrsp.sel4.cloudtype.app/community/tab/${param}`, {
             method: 'GET',
             headers: {
                 'Content-Type':'application/json'
@@ -60,7 +60,7 @@ const SchoolTab = () => {
             <View style={styles.box}>
                 <FlatList 
                     data={data}
-                    keyExtractor={item => item.id}
+                    keyExtractor={(item, index) => index.toString()}
                     renderItem={renderItem}/>
             </View>
             <TouchableOpacity style={styles.addPost} onPress={()=> navigation.push('NewPost')}>

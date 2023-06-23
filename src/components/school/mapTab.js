@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { StyleSheet, View, Text } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import {  WithLocalSvg } from 'react-native-svg';
 import DropDownPicker from 'react-native-dropdown-picker';
 import map1 from '../../assets/school/map1.svg';

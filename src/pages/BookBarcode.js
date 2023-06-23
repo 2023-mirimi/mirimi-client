@@ -1,4 +1,4 @@
-import { ScrollView, StyleSheet, Text, View, TouchableOpacity, Image } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity, Image } from 'react-native';
 import barcode from '../assets/mypage/barcode.png';
 import save from '../assets/mypage/save.png';
 import saved from '../assets/mypage/saved.png';
@@ -11,7 +11,7 @@ const BookBarcode = () => {
         <View style={styles.background}>
             <View style={styles.container}>
                 <View style={styles.box}>
-                    <Text style={styles.text}>0학년 0반 0번 김00</Text>
+                    <Text style={styles.text}>3학년 3반 11번 하진</Text>
                     <Image source={barcode} style={styles.barcode}/>
                     <Text>S210282</Text>
                     <TouchableOpacity
