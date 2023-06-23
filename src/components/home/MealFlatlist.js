@@ -3,16 +3,6 @@ import { View, Text, FlatList, StyleSheet } from "react-native";
 
 const meal = [
   {
-    MLSV_YMD: "20230622",
-    date: "목",
-    DDISH_NM1:
-      "곤드레밥&부추양념장<br/>\n북엇국<br/>상추치커리무침<br/>\n푸실리칠리볶음<br/>배추김치",
-    DDISH_NM2:
-      "현미밥<br/>순두부찌개<br/>상추치커리무침<br/>호박볶음<br/>배추김치<br/>수리취떡",
-    DDISH_NM3:
-      "추가밥<br/>양송이스프<br/>볶음김치<br/>웨지감사&소스<br/>상하이치킨버거<br/>에이드",
-  },
-  {
     MLSV_YMD: "20230623",
     date: "금",
     DDISH_NM1: "쌀밥<br/>쑥갓어묵국<br/>돈육장조림<br/>돌자반<br/>볶음김치",
@@ -40,6 +30,16 @@ const meal = [
     DDISH_NM3:
       "쌀밥<br/>소고기무국<br/>갈비찜<br/>참나물무침<br/>어묵볶음<br/>배추김치",
   },
+  {
+    MLSV_YMD: "20230628",
+    date: "수",
+    DDISH_NM1:
+      "쌀밥<br/>김칫국<br/>안동찜닭<br/>숙주나물<br/>깍두기",
+    DDISH_NM2:
+      "투움바빠네파스타<br/>콘스프<br/>목살큐브스테이크<br/>수제마늘빵<br/>오렌즈쥬스<br/>오이피클<br/>양상추샐러드",
+    DDISH_NM3:
+      "콩나물밥&부추양념장<br/>시금치된장국<br/>바베큐폭립<br/>열무나물무침<br/>배추김치<br/>젤리뽀",
+  }
 ];
 
 const renderMeal = ({ item }) => {
@@ -158,7 +158,7 @@ const styles = StyleSheet.create({
   },
 
   mealInfo: {
-    height: 100,
+    height: 40,
     background: "#FFFFFF",
     border: "1px solid #EDEDED",
     borderRadius: 16,
@@ -195,7 +195,7 @@ const styles = StyleSheet.create({
   element: {
     display: "flex",
     width: 185,
-    height: 440,
+    height: 320,
     backgroundColor: "#FFFFFF",
     borderWidth: 1,
     borderStyle: "solid",
