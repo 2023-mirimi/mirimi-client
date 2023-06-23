@@ -1,4 +1,4 @@
-import { ScrollView, StyleSheet, Text, View, TouchableOpacity, Image } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity, Image } from 'react-native';
 import barcode from '../assets/mypage/barcode.png';
 import save from '../assets/mypage/save.png';
 import saved from '../assets/mypage/saved.png';

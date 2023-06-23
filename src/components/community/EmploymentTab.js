@@ -1,4 +1,4 @@
-import { useIsFocused } from "@react-navigation/native";
+// import { useIsFocused } from "@react-navigation/native";
 import React,{useEffect, useState} from "react";
 import { StyleSheet, Text, View, FlatList, TouchableOpacity,Image } from "react-native";
 import { useNavigation } from '@react-navigation/native';
@@ -61,7 +61,7 @@ const EmploymentTab = () => {
             <View style={styles.box}>
                 <FlatList 
                     data={data}
-                    keyExtractor={item => item.id}
+                    keyExtractor={(item, index) => index.toString()}
                     renderItem={renderItem}/>
             </View>
             <TouchableOpacity style={styles.addPost} onPress={()=> navigation.push('NewPost')}>

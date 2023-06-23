@@ -4,7 +4,7 @@ import { StyleSheet,View, Text,TouchableOpacity,
 import { useState, useMemo } from "react";
 import * as ImagePicker from 'expo-image-picker';
 import RadioGroup from 'react-native-radio-buttons-group';
-import RNPoll, {IChoice} from "react-native-poll";
+// import RNPoll, {IChoice} from "react-native-poll";
 import CheckUploadModal from "../components/community/CheckUploadModal";
 import imageIcon from "../assets/community/image.png";
 import location from "../assets/community/location.png";

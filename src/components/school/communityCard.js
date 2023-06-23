@@ -1,8 +1,8 @@
-import { StyleSheet, Text, View, TouchableOpacity, Image } from 'react-native';
-import council from '../../assets/school/council.png';
-import image from '../../assets/school/image.png';
-import chat from '../../assets/school/chat.png';
-import like from '../../assets/school/like.png';
+import { StyleSheet, Text, View } from 'react-native';
+// import council from '../../assets/school/council.png';
+// import image from '../../assets/school/image.png';
+// import chat from '../../assets/school/chat.png';
+// import like from '../../assets/school/like.png';
 import { useNavigation } from '@react-navigation/native';
 
 const CommunityCard = () => {

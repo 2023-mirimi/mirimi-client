@@ -1,5 +1,5 @@
-import React, { Component } from "react";
-import { Text, View, Image, Dimensions } from "react-native";
+import React from "react";
+import { View, Dimensions } from "react-native";
 import { WithLocalSvg } from "react-native-svg";
 import Swiper from "react-native-swiper";
 import Banner1 from "../../assets/home/banner-2.svg";

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react"
 import { StyleSheet, Text, View, FlatList, TouchableOpacity,Image } from "react-native";
 import { useNavigation } from '@react-navigation/native';
-import BottomTabNavigator from "../../navigation/BottomTabNavigator";
+// import BottomTabNavigator from "../../navigation/BottomTabNavigator";
 
 const ContestTab = () => {
 	const navigation = useNavigation()
@@ -59,7 +59,7 @@ const ContestTab = () => {
             <View style={styles.box}>
                 <FlatList 
                     data={data}
-                    keyExtractor={item => item.id}
+                    keyExtractor={(item, index) => index.toString()}
                     renderItem={renderItem}/>
             </View>
             <TouchableOpacity style={styles.addPost} onPress={()=> navigation.push('NewPost')}>

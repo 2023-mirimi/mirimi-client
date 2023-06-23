@@ -26,7 +26,7 @@ const LikeCommunity = () => {
       return (
         <FlatList
           data={myPostsData}
-          keyExtractor={(item) => item.id}
+          keyExtractor={(item, index) => index.toString()}
           renderItem={({ item }) => (
             <CommunityCard data={item} />
           )}
@@ -36,7 +36,7 @@ const LikeCommunity = () => {
       return (
         <FlatList
           data={likedPostsData}
-          keyExtractor={(item) => item.id}
+          keyExtractor={(item, index) => index.toString()}
           renderItem={({ item }) => (
             <CommunityCard data={item} />
           )}

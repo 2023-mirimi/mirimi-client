@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { StyleSheet, Text, View, TouchableOpacity, Image } from "react-native";
-import profile from "../../assets/school/council.png";
+// import profile from "../../assets/school/council.png";
 import filledHeart from "../../assets/competition/filledHeart.png";
 import emptyHeart from "../../assets/competition/emptyHeart.png";
 import { FlatList } from "react-native-gesture-handler";
@@ -95,7 +95,7 @@ const UIUXTab = () => {
             src={item.src}
           />
         )}
-        keyExtractor={(item, index) => index}
+        keyExtractor={(item, index) => index.toString()}
         numColumns={2}
       />
     </View>

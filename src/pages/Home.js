@@ -2,10 +2,7 @@ import React from "react";
 import {
   ScrollView,
   StyleSheet,
-  Text,
-  View,
-  Image,
-  TouchableOpacity,
+  View
 } from "react-native";
 import { createStackNavigator } from "@react-navigation/stack";
 

@@ -3,7 +3,7 @@ import { StyleSheet, View,Text, Image, TouchableOpacity, TextInput,
     KeyboardAvoidingView,Pressable,Keyboard,Platform, FlatList, ScrollView, TouchableWithoutFeedback } from "react-native";
 import share from "../assets/community/share-ios.png";
 import horn from "../assets/community/horn.png";
-import profile from "../assets/mypage/profile.png";
+// import profile from "../assets/mypage/profile.png";
 import Return from "../assets/community/return.png";
 import More from "../assets/community/more.png";
 import axios from "axios";
@@ -135,7 +135,8 @@ const DetailedCommunity = ({navigation, route}) => {
             <FlatList 
                 style={styles.scroll}
                 data={reply}
-                renderItem={renderItem}/>
+                renderItem={renderItem}
+                keyExtractor={(item, index) => index.toString()}/>
             </View>
             <KeyboardAvoidingView behavior={Platform.OS == 'ios' ? 'padding' : null}>
             <View style={styles.footer}>

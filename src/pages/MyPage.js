@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
-import profile from '../assets/mypage/profile.png';
+// import profile from '../assets/mypage/profile.png';
 import settings from '../assets/mypage/settings.png';
 import move from '../assets/mypage/move.png';
 import cup from '../assets/icons/cup.png';
@@ -54,7 +54,7 @@ const MyPage = () => {
                 <Text style={styles.name}>하진</Text>
             </View>
           </View>
-            <Image source={settings}/>
+            {/* <Image source={settings}/> */}
         </View>
         <View style={styles.box2}>
           <TouchableOpacity style={styles.touchBox} onPress={() => navigation.navigate('LikeCompetition')}>

@@ -60,7 +60,7 @@ const DailyTab = () => {
             <View style={styles.box}>
                 <FlatList 
                     data={data}
-                    keyExtractor={item => item.id}
+                    keyExtractor={(item, index) => index.toString()}
                     renderItem={renderItem}/>
             </View>
             <TouchableOpacity style={styles.addPost} onPress={()=> navigation.push('NewPost')}>

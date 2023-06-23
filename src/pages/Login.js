@@ -1,4 +1,4 @@
-import { useNavigation } from '@react-navigation/native';
+// import { useNavigation } from '@react-navigation/native';
 import React, { useState } from 'react'
 import { View, Image, StyleSheet, TextInput, Text, TouchableOpacity, Button,Alert } from "react-native";
 import BouncyCheckbox from "react-native-bouncy-checkbox";
@@ -47,7 +47,6 @@ export default Login = ({navigation}) => {
     return(
         <View style={styles.container}>
             <Image style={styles.icon} source={require('../assets/icon.png')}></Image>
-            <Image source={require('../assets/mirimi.png')}></Image>
             <View style={styles.login}>
                 <TextInput 
                     value={inputData.email}
