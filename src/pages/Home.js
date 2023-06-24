@@ -1,17 +1,10 @@
 import React from "react";
-import {
-  ScrollView,
-  StyleSheet,
-  View
-} from "react-native";
-import { createStackNavigator } from "@react-navigation/stack";
+import { ScrollView, StyleSheet, View } from "react-native";
 
 import Header from "../components/header";
 import HomeSwiper from "../components/home/HomeSwiper";
 import Schedule from "../components/home/Schedule";
 import MealFlatList from "../components/home/MealFlatlist";
-
-const Stack = createStackNavigator();
 
 const Home = () => {
   return (
@@ -27,18 +20,6 @@ const Home = () => {
   );
 };
 
-const HomeNavigator = () => {
-  return (
-    <Stack.Navigator
-      screenOptions={{
-        headerShown: false,
-      }}
-    >
-      <Stack.Screen name="HomeScreen" component={Home} />
-    </Stack.Navigator>
-  );
-};
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -50,4 +31,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default HomeNavigator;
+export default Home;

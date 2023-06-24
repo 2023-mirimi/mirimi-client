@@ -2,7 +2,7 @@ import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Text, Image } from "react-native";
 
-import HomeNavigator from "../pages/Home";
+import Home from "../pages/Home";
 import CommunityNavigator from "../pages/Community";
 import CompetitionNavigator from "../pages/Competition";
 import SchoolLifeNavigator from "../pages/School";
@@ -22,7 +22,7 @@ const BottomTabNavigator = () => {
     >
       <Tab.Screen
         name="HomeNavigator"
-        component={HomeNavigator}
+        component={Home}
         options={{
           tabBarLabel: ({ focused }) => (
             <Text style={{ color: focused ? "black" : "#7F8487" }}>홈</Text>
