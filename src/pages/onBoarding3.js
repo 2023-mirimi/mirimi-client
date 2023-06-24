@@ -23,7 +23,7 @@ const OnBoarding3 = ({navigation}) => {
             <View style={styles.dot}/>
             <View style={styles.selectedDot}/>
         </View>
-        <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('HomeNavigator')}><Text>시작하기</Text></TouchableOpacity>
+        <TouchableOpacity style={styles.button} onPress={() => navigation.push('HomeNavigator')}><Text>시작하기</Text></TouchableOpacity>
     </View>
   );
 }

@@ -61,11 +61,6 @@ export default function HomeSwpier() {
 
   const navigation = useNavigation(); // navigation 객체를 초기화합니다.
 
-  // 배너를 눌렀을 때 실행되는 함수로, onBoarding 페이지로 이동합니다.
-  const handleBannerPress = () => {
-    navigation.navigate("온보딩1");
-  };
-
   return (
     <View style={styles.container}>
       <Swiper
@@ -81,7 +76,7 @@ export default function HomeSwpier() {
             <WithLocalSvg asset={Banner1} />
           </View>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.slide3} onPress={handleBannerPress}>
+        <TouchableOpacity style={styles.slide3} onPress={() => navigation.push("온보딩1")}>
           <View>
             <WithLocalSvg asset={Banner2} />
           </View>
