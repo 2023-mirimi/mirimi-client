@@ -3,10 +3,9 @@ import { StyleSheet, Text, View } from 'react-native';
 // import image from '../../assets/school/image.png';
 // import chat from '../../assets/school/chat.png';
 // import like from '../../assets/school/like.png';
-import { useNavigation } from '@react-navigation/native';
+// import { useNavigation } from '@react-navigation/native';
 
 const CommunityCard = () => {
-	const navigation = useNavigation()
 	
   return (
     <View style={styles.container}>
